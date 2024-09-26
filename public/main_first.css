@@ -1,0 +1,791 @@
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #3e3e3e;
+    font-family: 'SUIT-Regular'
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*==================================================================*/
+
+/* 모니터 크기는 1920px */
+@media screen and (max-width:1920px) {
+
+    /* header */
+    header {
+        width: 100%;
+        height: 260px;
+    }
+
+    #FamilyLink01 {
+        width: 75%;
+        height: 30px;
+        margin-left: 30px;
+        padding-top: 20px;
+        box-sizing: border-box;
+    }
+
+    #FamilyLink01 a {
+        color: #7d7d7d;
+    }
+
+    #FamilyLink01 a:hover {
+        color: #94adc5;
+    }
+
+    #logo {
+        width: 420px;
+        margin: 80px 15px;
+    }
+
+    nav {
+        width: 15%;
+        height: 65%;
+        text-align: center;
+        float: right;
+        margin-top: 115px;
+        position: relative;
+    }
+
+    .search {
+        width: 65%;
+        border: solid .5px #6a5d55;
+        height: 27px;
+        position: absolute;
+        right: 80px;
+    }
+
+    .search-send {
+        width: 28px;
+        height: 28px;
+        border: none;
+        background: none;
+        position: absolute;
+        right: 50px;
+    }
+
+    /* menu */
+    #menu {
+        width: 100%;
+        height: 40px;
+        position: absolute;
+        top: 210px;
+        font-weight: 600;
+    }
+
+    .mainmenu li {
+        float: left;
+        margin: 10px 9.5%;
+    }
+
+    .submenu {
+        display: none;
+    }
+
+    /* toggle */
+
+    .toggle {
+        width: 30px;
+        height: 30px;
+        float: right;
+        margin-top: 185px;
+    }
+
+    #toggle:checked + label {
+        background: url(/img/toggle.png) cover;
+    }
+
+    #toggle {
+        display: none;
+    }
+
+
+    /* main */
+    main {
+        width: 100%;
+        height: 800px;
+        background-image: url(/img/candle.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 70%;
+        position: relative;
+
+    }
+
+    section:first-of-type {
+        width: 55%;
+        height: 100%;
+        position: absolute;
+    }
+
+    section:nth-of-type(2) {
+        width: 20%;
+        height: 100%;
+        position: absolute;
+        right: 430px;
+    }
+
+    section:nth-of-type(3) {
+        width: 20%;
+        height: 100%;
+        position: absolute;
+        right: 30px;
+    }
+
+    /* 빈소 현황 */
+    #situation {
+        width: 90%;
+        height: 650px;
+        background-color: rgb(34, 16, 3);
+        position: absolute;
+        top: 60px;
+        left: 50px;
+        border-radius: 30px;
+        color: white;
+    }
+
+    .situation-title01 {
+        text-align: center;
+        margin: 30px 0;
+        color: white;
+    }
+
+    .room_info {
+        width: 95%;
+        height: 80%;
+        margin-left: 40px;
+    }
+
+    table {
+        width: 100%;
+        font-size: 13px;
+        line-height: 45px;
+    }
+
+    table td {
+        height: 28px;
+        text-align: center;
+        line-height: 60px;
+    }
+
+    section:first-of-type>p {
+        color: white;
+        position: absolute;
+        bottom: 50px;
+        left: 80px;
+    }
+
+    section:first-of-type>p a:hover {
+        color: #94adc5;
+        width: 100%;
+        display: block;
+    }
+
+    /* 감사인사 및 조문하기 */
+    section:nth-last-of-type(2) div {
+        width: 70%;
+        height: 40px;
+        background-color: rgb(34, 16, 3);
+        color: white;
+        padding-top: 10px;
+        box-sizing: border-box;
+        text-align: center;
+        border-radius: 15px;
+        position: absolute;
+        left: 50px;
+    }
+
+    section:nth-last-of-type(2) div:nth-child(1) {
+        bottom: 140px;
+    }
+
+    section:nth-last-of-type(2) div:nth-child(2) {
+        bottom: 90px;
+    }
+
+    section:nth-last-of-type(2) a {
+        display: block;
+        width: 100%;
+    }
+
+    section:nth-last-of-type(2) div:hover {
+        background-color: rgb(231, 231, 231);
+        color: rgb(34, 16, 3);
+    }
+
+    /* 장례식장 문의전화 */
+
+    #call {
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        bottom: 80px;
+    }
+
+    .call {
+        width: 80px;
+        float: left;
+        margin-left: 50px;
+    }
+
+    .call-content {
+        width: 160px;
+        height: 80px;
+        float: left;
+        text-align: center;
+        line-height: 25px;
+        box-sizing: border-box;
+        color: white;
+    }
+
+    .call-content p:first-child {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /* footer */
+    footer {
+        width: 100%;
+        height: 150px;
+        background-color: #6a5d55;
+        font-size: 14px;
+        color: white;
+    }
+
+    #left-footer {
+        width: 45%;
+        height: 80%;
+        float: left;
+        margin: 20px 0 0 250px;
+        line-height: 35px;
+    }
+
+    .footer-link a:hover {
+        color: #94adc5;
+    }
+
+    #right-footer {
+        width: 15%;
+        height: 80%;
+        float: right;
+        margin-top: 55px;
+        margin-right: 70px;
+        text-align: center;
+    }
+
+    #FamilySite {
+        width: 85%;
+        height: 55%;
+        border-radius: 10px;
+        font-size: 12px;
+        padding-left: 12px;
+        box-sizing: border-box;
+    }
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:1608px) {
+
+    /* menu */
+    #menu {
+        top: 210px;
+    }
+
+    .mainmenu li {
+        margin: 10px 9%;
+    }
+
+    /* 감사인사 및 조문하기 */
+    section:nth-last-of-type(2) div {
+        left: 120px;
+    }
+
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:1450px) {
+    /* 장례식장 문의전화 */
+
+    .call {
+        margin-left: 0;
+    }
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:1380px) {
+
+    /* menu */
+    #menu {
+        top: 210px;
+    }
+
+    .mainmenu li {
+        margin: 10px 8.5%;
+    }
+
+    /* 빈소 현황 */
+    .room_info {
+        width: 90%;
+    }
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:1206px) {
+
+    /* menu */
+    #menu {
+        top: 210px;
+    }
+
+    .mainmenu li {
+        margin: 10px 8%;
+    }
+
+    /* 감사인사 및 조문하기 */
+    section:nth-last-of-type(2) div {
+        left: 180px;
+    }
+
+    /* 장례식장 문의전화 */
+    .call {
+        width: 70px;
+        margin-left: -20px;
+    }
+
+    .call-content {
+        width: 150px;
+    }
+
+    /* footer */
+    #left-footer {
+        width: 45%;
+        height: 80%;
+        float: left;
+        margin: 20px 0 0 100px;
+        line-height: 35px;
+    }
+
+    #right-footer {
+        width: 25%;
+    }
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:1024px) {
+
+    /* header */
+    header {
+        height: 170px;
+    }
+
+    #FamilyLink01 {
+        font-size: 12px;
+    }
+
+    #logo {
+        width: 320px;
+        margin: 30px 20px;
+    }
+
+    nav {
+        width: 20%;
+        height: 60%;
+        margin-top: -13px;
+    }
+
+    .search {
+        width: 130px;
+        height: 20px;
+        right: 30px;
+    }
+
+    .search-send {
+        right: 0px;
+    }
+
+    /* menu */
+    #menu {
+        top: 130px;
+        font-size: 14px;
+    }
+
+    .mainmenu li {
+        margin: 10px 8%;
+    }
+
+    /* main */
+    main {
+        height: 600px;
+    }
+
+    /* main - 빈소 현황 */
+    #situation {
+        width: 100%;
+        height: 500px;
+        top: 50px;
+    }
+
+    .room_info {
+        margin-left: 30px;
+    }
+
+    section:first-of-type>p {
+        bottom: 20px;
+    }
+
+    /* 감사인사 및 조문하기 */
+    section:nth-last-of-type(2) div {
+        width: 230px;
+        left: 310px;
+    }
+
+    /* 문의전화 */
+    #call {
+        display: none;
+    }
+
+    /* footer */
+    footer {
+        height: 160px;
+    }
+
+    #left-footer {
+        font-size: 12px;
+    }
+
+    #right-footer {
+        width: 30%;
+        margin-right: 130px;
+    }
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:938px) {
+
+    /* menu */
+    #menu {
+        top: 130px;
+    }
+
+    .mainmenu li {
+        margin: 10px 7.5%;
+    }
+
+    /* footer */
+    #left-footer {
+        font-size: 11px;
+    }
+
+    #right-footer {
+        width: 32%;
+        margin-right: 40px;
+    }
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:848px) {
+
+    /* menu */
+    #menu {
+        top: 130px;
+    }
+
+    .mainmenu li {
+        margin: 10px 7%;
+    }
+
+    /* footer */
+    #left-footer {
+        font-size: 10px;
+    }
+
+    #right-footer {
+        width: 28%;
+    }
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:768px) {
+
+    /* header */
+    header {
+        height: 150px;
+    }
+
+    #FamilyLink01 {
+        width: 80%;
+        font-size: 11px;
+    }
+
+    #logo {
+        width: 280px;
+        margin: 30px 20px;
+    }
+
+    nav {
+        width: 15%;
+    }
+
+    .search {
+        width: 75px;
+        height: 18px;
+    }
+
+    .search-send {
+        width: 15px;
+        height: 15px;
+        right: 10px;
+    }
+
+    .login {
+        font-size: 10px;
+        bottom: 6px;
+    }
+
+    /* menu */
+    #menu {
+        top: 115px;
+        font-size: 13px;
+    }
+
+    /* main */
+    main {
+        height: 600px;
+    }
+
+    /* main - 빈소 현황 */
+    #situation {
+        width: 95%;
+        height: 500px;
+        top: 50px;
+    }
+
+    .room_info {
+        margin-left: 25px;
+    }
+
+    section:first-of-type>p {
+        bottom: 20px;
+    }
+
+    /* footer */
+    footer {
+        height: 120px;
+    }
+
+    #left-footer {
+        font-size: 8px;
+        line-height: 25px;
+        margin-left: 70px;
+    }
+
+    #right-footer {
+        display: none;
+    }
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:721px) {
+
+    .search {
+        display: none;
+    }
+
+    .search-send {
+        display: none;
+    }
+
+    .login {
+        display: none;
+    }
+
+    /* menu */
+    #menu {
+        top: 115px;
+        font-size: 12px;
+    }
+
+    /* 빈소 현황 */
+    #situation {
+        display: none;
+    }
+
+    section:first-of-type>p {
+        display: none;
+    }
+
+    /* 감사인사 및 조문하기 */
+    section:nth-last-of-type(2) div {
+        display: none;
+    }
+
+    /* 문의전화 */
+    #call {
+        display: block;
+        top: 320px;
+    }
+
+    .call {
+        
+        margin-left: -300px;
+    }
+
+    .call-content {
+        margin-left: -230px;
+    }
+
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:670px) {
+
+    /* header */
+    #FamilyLink01 {
+        display: none;
+    }
+
+    #logo {
+        margin: 20px;
+    }
+
+    /* menu */
+    #menu {
+        top: 115px;
+    }
+
+    .mainmenu li {
+        margin: 10px 6.7%;
+    }
+
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:625px) {
+
+    .mainmenu li {
+        margin: 10px 40px;
+    }
+
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:610px) {
+
+    .mainmenu li {
+        margin: 10px 39px;
+    }
+
+    /* 빈소 현황 */
+    #situation {
+        top: 30px;
+        left: 60px;
+    }
+
+    /* footer */
+    #left-footer {
+        width: 100%;
+        font-size: 8px;
+        line-height: 25px;
+        margin-left: 70px;
+        margin-top: 15px;
+    }
+
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:580px) {
+
+    .mainmenu li {
+        margin: 10px 35px;
+    }
+
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:540px) {
+
+    .mainmenu li {
+        margin: 10px 28px;
+    }
+}
+
+/*==================================================================*/
+
+@media screen and (max-width:500px) {
+
+    body {
+        height: 800px;
+    }
+
+    #FamilyLink01 {
+        display: none;
+    }
+
+    /* header */
+    header {
+        height: 100px;
+    }
+
+    #logo {
+        width: 230px;
+        margin: 10px;
+    }
+
+    /* menu */
+    #menu {
+        display: none;
+    }
+
+    /* main */
+    main {
+        height: 550px;
+    }
+
+    /* 문의전화 */
+    .call {
+        
+        margin-left: -230px;
+    }
+
+    .call-content {
+        margin-left: -160px;
+    }
+
+    /* footer */
+    footer {
+        height: 100px;
+    }
+}
