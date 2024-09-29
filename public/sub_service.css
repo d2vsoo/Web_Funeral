@@ -1,0 +1,287 @@
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #3e3e3e;
+    font-family: 'SUIT-Regular'
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* header */
+header {
+    width: 1920px;
+    height: 260px;
+}
+
+#FamilyLink01 {
+    width: 1000px;
+    height: 30px;
+    margin-left: 30px;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+
+#FamilyLink01 a {
+    color: #7d7d7d;
+}
+
+#FamilyLink01 a:hover {
+    color: #94adc5;
+}
+
+#logo {
+    width: 420px;
+    margin: 80px 15px;
+}
+
+nav {
+    width: 300px;
+    height: 80px;
+    text-align: center;
+    float: right;
+    margin-top: 115px;
+    position: relative;
+}
+
+.search {
+    width: 200px;
+    border: solid .5px #6a5d55;
+    height: 27px;
+    position: absolute;
+    right: 80px;
+}
+
+.search-send {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: none;
+    position: absolute;
+    right: 50px;
+}
+
+/* menu */
+#menu {
+    width: 1920px;
+    height: 40px;
+    position: absolute;
+    top: 210px;
+    font-weight: 600;
+    border-bottom: #6a5d55 0.5px solid;
+}
+
+.mainmenu li {
+    width: 250px;
+    height: 40px;
+    float: left;
+    width: 24.5%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.mainmenu a {
+    width: 100%;
+    display: block;
+}
+
+.submenu {
+    display: none;
+}
+
+.submenu li {
+    width: 100%;
+    height: 60px;
+}
+
+.submenu li:nth-of-type(1) {
+    margin-top: 20px;
+}
+
+.mainmenu li:hover .submenu {
+    display: block;
+}
+
+
+/* main */
+main {
+    width: 1920px;
+    height: 800px;
+}
+
+#title {
+    width: 260px;
+    height: 40px;
+    text-align: center;
+    padding-top: 8px;
+    box-sizing: border-box;
+    background-color: #5b7d9b;
+    border-radius: 15px;
+    color: white;
+    margin: 40px 0 10px 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#servicebox01 {
+    width: 500px;
+    height: 700px;
+    float: left;
+    margin-left: 30px;
+    margin-right: 40px;
+}
+
+#servicebox02 {
+    width: 800px;
+    height: 700px;
+    float: left;
+    margin-left: 5px;
+    margin-right: 40px;
+}
+
+#servicebox03 {
+    width: 430px;
+    height: 700px;
+    float: left;
+    margin-left: 15px;
+    margin-right: 40px;
+
+}
+
+.service_title {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 60px;
+    padding-bottom: 15px;
+}
+
+#servicebox01 .service_border {
+    width: 250px;
+    border: #5b7d9b 1px solid;
+    margin-left: 120px;
+}
+
+#servicebox02 .service_border {
+    width: 360px;
+    border: #5b7d9b 1px solid;
+    margin-left: 220px;
+}
+
+#servicebox03 .service_border {
+    width: 250px;
+    border: #5b7d9b 1px solid;
+    margin-left: 90px;
+}
+
+.servicebox01 {
+    width: 100%;
+    height: 550px;
+    margin-top: 40px;
+    margin-left: 50px;
+    padding: 50px;
+    line-height: 80px;
+    box-sizing: border-box;
+}
+
+.servicebox01 img {
+    float: left;
+    margin: 15px 30px 15px 30px ;
+}
+
+
+.servicebox02 {
+    width: 100%;
+    height: 550px;
+    margin-top: 40px;
+    position: relative;
+}
+
+.servicebox02 div {
+    width: 800px;
+    height: 500px;
+    border: #6a5d55 1px solid;
+    border-radius: 15px;
+}
+
+.servicebox02 img {
+    margin-left: 80px;
+}
+
+.servicebox02 p {
+    position: absolute;
+    font-size: 21px;
+    bottom: 0;
+    left: 120px;
+    font-weight: 600;
+    color: #6a5d55;
+}
+
+.servicebox03 {
+    width: 100%;
+    height: 550px;
+    margin-top: 40px;
+}
+
+.servicebox03 img {
+    margin-left: 102px;
+}
+
+.servicebox03 img:hover {
+    opacity: 70%;
+}
+
+/* footer */
+footer {
+    width: 1920px;
+    height: 150px;
+    background-color: #6a5d55;
+    font-size: 14px;
+    color: white;
+}
+
+#left-footer {
+    width: 45%;
+    height: 80%;
+    float: left;
+    margin: 20px 0 0 250px;
+    line-height: 35px;
+}
+
+.footer-link a:hover {
+    color: #94adc5;
+}
+
+#right-footer {
+    width: 15%;
+    height: 80%;
+    float: right;
+    margin-top: 55px;
+    margin-right: 70px;
+    text-align: center;
+}
+
+#FamilySite {
+    width: 100%;
+    height: 55%;
+    border-radius: 10px;
+    font-size: 12px;
+    padding-left: 12px;
+    box-sizing: border-box;
+}
