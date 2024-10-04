@@ -27,7 +27,8 @@ a {
 /* header */
 header {
     width: 1920px;
-    height: 260px;
+    height: 220px;
+    position: relative;
 }
 
 #FamilyLink01 {
@@ -53,11 +54,11 @@ header {
 
 nav {
     width: 300px;
-    height: 80px;
+    height: 40px;
     text-align: center;
-    float: right;
-    margin-top: 115px;
-    position: relative;
+    position: absolute;
+    right: 30px;
+    top: 150px;
 }
 
 .search {
@@ -78,40 +79,32 @@ nav {
 }
 
 /* menu */
-#menu {
-    width: 1920px;
-    height: 40px;
-    position: absolute;
-    top: 210px;
-    font-weight: 600;
+.menu {
+    width: 100%;
+    height: 55px;
+    font-size: 19px;
 }
 
-.mainmenu li {
-    width: 250px;
-    height: 40px;
+.mainmenu {
     float: left;
-    width: 24.5%;
-    padding: 10px;
-    box-sizing: border-box;
+    width: 25%;
     text-align: center;
+    line-height: 55px;
 }
 
-.mainmenu a {
+.mainmenu>a {
     width: 100%;
     display: block;
+    font-weight: 600; 
 }
 
-.submenu {
-    display: none;
+.mainmenu>a:hover {
+    background-color: #94adc5;
 }
 
 .submenu li {
     width: 100%;
     height: 60px;
-}
-
-.submenu li:nth-of-type(1) {
-    margin-top: 20px;
 }
 
 .mainmenu li:hover .submenu {

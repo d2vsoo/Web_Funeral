@@ -88,10 +88,9 @@ nav {
 }
 
 .mainmenu li {
-    width: 250px;
+    width: 25%;
     height: 40px;
     float: left;
-    width: 24.5%;
     padding: 10px;
     box-sizing: border-box;
     text-align: center;
@@ -100,6 +99,10 @@ nav {
 .mainmenu a {
     width: 100%;
     display: block;
+}
+
+.mainmenu>li:hover {
+    background-color: #94adc5;
 }
 
 .submenu {
@@ -113,10 +116,6 @@ nav {
 
 .submenu li:nth-of-type(1) {
     margin-top: 20px;
-}
-
-.mainmenu li:hover .submenu {
-    display: block;
 }
 
 
@@ -140,112 +139,15 @@ main {
     font-weight: 600;
 }
 
-#servicebox01 {
-    width: 500px;
-    height: 700px;
-    float: left;
-    margin-left: 30px;
-    margin-right: 40px;
-}
-
-#servicebox02 {
-    width: 800px;
-    height: 700px;
-    float: left;
-    margin-left: 5px;
-    margin-right: 40px;
-}
-
-#servicebox03 {
-    width: 430px;
-    height: 700px;
-    float: left;
-    margin-left: 15px;
-    margin-right: 40px;
-
-}
-
-.service_title {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 60px;
-    padding-bottom: 15px;
-}
-
-#servicebox01 .service_border {
-    width: 250px;
-    border: #5b7d9b 1px solid;
-    margin-left: 120px;
-}
-
-#servicebox02 .service_border {
-    width: 360px;
-    border: #5b7d9b 1px solid;
-    margin-left: 220px;
-}
-
-#servicebox03 .service_border {
-    width: 250px;
-    border: #5b7d9b 1px solid;
-    margin-left: 90px;
-}
-
-.servicebox01 {
+#Process {
     width: 100%;
-    height: 550px;
-    margin-top: 40px;
-    margin-left: 50px;
-    padding: 50px;
-    line-height: 80px;
-    box-sizing: border-box;
-}
-
-.servicebox01 img {
-    float: left;
-    margin: 15px 30px 15px 30px ;
+    height: 100%;
+    background-color: #5b7d9b;
 }
 
 
-.servicebox02 {
-    width: 100%;
-    height: 550px;
-    margin-top: 40px;
-    position: relative;
-}
 
-.servicebox02 div {
-    width: 800px;
-    height: 500px;
-    border: #6a5d55 1px solid;
-    border-radius: 15px;
-}
 
-.servicebox02 img {
-    margin-left: 80px;
-}
-
-.servicebox02 p {
-    position: absolute;
-    font-size: 21px;
-    bottom: 0;
-    left: 120px;
-    font-weight: 600;
-    color: #6a5d55;
-}
-
-.servicebox03 {
-    width: 100%;
-    height: 550px;
-    margin-top: 40px;
-}
-
-.servicebox03 img {
-    margin-left: 102px;
-}
-
-.servicebox03 img:hover {
-    opacity: 70%;
-}
 
 /* footer */
 footer {
