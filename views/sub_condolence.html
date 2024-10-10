@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 의정부을지대병원 장례식장 </title>
     <link rel="shortcut icon" href="/img/emc.jpg">
-    <link rel="stylesheet" href="/public/sub_info.css">
+    <link rel="stylesheet" href="/public/sub_condolence.css">
 </head>
 
 <body>
@@ -40,7 +40,12 @@
         </div>
 
         <!-- logo -->
-        <a href=""><img src="/img/logo.png" alt="EMC_LOGO" id="logo"></a>
+        <div id="logo">
+            <a href="#">
+                <img src="/img/logo.png" alt="EMC_LOGO" class="logo">
+            </a>
+        </div>
+
 
         <!-- navbar -->
         <nav>
@@ -58,81 +63,80 @@
                 </button>
             </div>
         </nav>
-
-        <!-- menu -->
-        <ul class="menu">
-            <li class="mainmenu">
-                <a href="/views/sub_introduce.html"> 장례식장 소개 </a>
-                <ul class="submenu">
-                    <li><a href="/views/sub_introduce.html"> 장례식장 소개 </a></li>
-                    <li><a href="/views/sub_fd.html"> 장례지도사 소개 </a></li>
-                    <li><a href="/views/sub_facilities.html"> 오시는 길 </a></li>
-                </ul>
-            </li>
-            <li class="mainmenu">
-                <a href="/views/sub_process.html"> 장례식장 이용절차 </a>
-                <ul class="submenu">
-                    <li><a href="/views/sub_process.html"> 장례절차 </a></li>
-                    <li><a href="/views/sub_service.html"> 장례서비스 </a></li>
-                </ul>
-            </li>
-            <li class="mainmenu">
-                <a href="#"> 빈소현황 및 조문 </a>
-                <ul class="submenu">
-                    <li><a href="/views/sub_Status.html"> 빈소현황 </a></li>
-                    <li><a href="/views/sub_condolence.html"> 조문하기 </a></li>
-                </ul>
-            </li>
-            <li class="mainmenu">
-                <a href="/views/sub_thank.html"> 감사인사 전하기 </a>
-            </li>
-        </ul>
     </header>
+
+    <!-- menu -->
+    <ul class="menu">
+        <li class="mainmenu">
+            <a href="/views/sub_introduce.html"> 장례식장 소개 </a>
+            <ul class="submenu">
+                <li><a href="/views/sub_introduce.html"> 장례식장 소개 </a></li>
+                <li><a href="/views/sub_fd.html"> 장례지도사 소개 </a></li>
+                <li><a href="/views/sub_facilities.html"> 오시는 길 </a></li>
+            </ul>
+        </li>
+        <li class="mainmenu">
+            <a href="/views/sub_process.html"> 장례식장 이용절차 </a>
+            <ul class="submenu">
+                <li><a href="/views/sub_process.html"> 장례절차 </a></li>
+                <li><a href="/views/sub_service.html"> 장례서비스 </a></li>
+            </ul>
+        </li>
+        <li class="mainmenu">
+            <a href="#"> 빈소현황 및 조문 </a>
+            <ul class="submenu">
+                <li><a href="/views/sub_Status.html"> 빈소현황 </a></li>
+                <li><a href="/views/sub_condolence.html"> 조문하기 </a></li>
+            </ul>
+        </li>
+        <li class="mainmenu">
+            <a href="/views/sub_thank.html"> 감사인사 전하기 </a>
+        </li>
+    </ul>
 
     <!-- Main -->
     <main>
         <div id="title">
-            문의하기
+            빈소 현황
         </div>
-
-        <!-- 장례식장 문의 전화번호 -->
-        <div id="infobox01">
-            <p class="info_title"> 장례식장 문의 전화번호 </p>
-            <p class="info_border"></p>
-            <div class="infobox01">
-                <img src="/img/flower_call.png" alt="call" width="40">
-                <p class="call_title"> 전화번호 (직통) </p>
-                <p class="call_content"> 031) 951-7444 </p>
-                <img src="/img/flower_call.png" alt="call " width="40">
-                <p class="call_title"> 전화번호 (교환) </p>
-                <p class="call_content"> 031) 951-7414 </p>
-                <img src="/img/flower_call.png" alt="call" width="40">
-                <p class="call_title">  팩스 FAX </p>
-                <p class="call_content"> 031) 951-7420</p>
+        <h3>
+            삼가 고인의 명복을 빕니다.
+        </h3>
+        <p>
+            현재 의정부을지대학교병원 장례식장의 실시간 빈소현황입니다.
+            <br>고인의 가시는 길 편안하고 아름답기를 기원합니다.
+        </p>
+        <div id="boxContainer" style="overflow: hidden;">
+            <div id="box">
+                <div class="slide-box box01">
+                    <div class="minibox"></div>
+                    <div class="minibox"></div>
+                    <div class="minibox"></div>
+                    <div class="minibox"></div>
+                </div>
+                <div class="slide-box box02">
+                    <div class="minibox"></div>
+                    <div class="minibox"></div>
+                    <div class="minibox"></div>
+                    <div class="minibox"></div>
+                </div>
+                <div class="slide-box box03">
+                    <div class="minibox"></div>
+                    <div class="minibox"></div>
+                    <div class="minibox"></div>
+                    <div class="minibox"></div>
+                </div>
             </div>
         </div>
 
-        <!-- 장례식장 병원 내 위치 -->
-        <div id="infobox02">
-            <p class="info_title"> 장례식장 병원 내 위치 </p>
-            <p class="info_border"></p>
-            <div class="infobox02">
-                <div><img src="/img/funeral2_location2.png" alt="location" width="600"></div>
-                <p> 경기도 의정부시 동일로 712 의정부을지대학교병원 평온관(장례식장) </p>
-            </div>
-            
+        <div id="button">
+            <button class="before"> 이전 </button>
+            <button class="condolence" type="button" onclick="location.href='sub_condolenceboard.html'"> 조문하기 </button>
+            <button class="next"> 다음 </button>
         </div>
 
-        <!-- 장례식장 이용안내 책자 -->
-        <div id="infobox03">
-            <p class="info_title"> 장례식장 이용안내 책자 </p>
-            <p class="info_border"></p>
-            <div class="infobox03">
-                <a href="https://www.eulji.or.kr/bibi/bibi/?book=230213_10.epub">
-                    <img src="/img/eulji.png" alt="eulji" width="225">
-                </a>
-            </div>
-        </div>
+
+
     </main>
 
     <!-- Footer -->
