@@ -24,6 +24,11 @@ a {
     color: inherit;
 }
 
+#Wrap {
+    width: 1920px;
+    height: 1200px;
+}
+
 /* header */
 header {
     width: 1920px;
@@ -54,11 +59,11 @@ header {
 
 nav {
     width: 300px;
-    height: 40px;
+    height: 80px;
     text-align: center;
     position: absolute;
     right: 30px;
-    top: 150px;
+    top: 110px;
 }
 
 .search {
@@ -76,6 +81,19 @@ nav {
     background: none;
     position: absolute;
     right: 50px;
+}
+
+#user {
+    width: 200px;
+    height: 28px;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    font-weight: 600;
+}
+
+.login:hover {
+    color: #94adc5;
 }
 
 /* menu */
@@ -127,20 +145,20 @@ main {
 
 section:first-of-type {
     width: 1150px;
-    height: 100%;
+    height: 800px;
     position: absolute;
 }
 
 section:nth-of-type(2) {
-    width: 20%;
-    height: 100%;
+    width: 380px;
+    height: 800px;
     position: absolute;
-    right: 430px;
+    right: 420px;
 }
 
 section:nth-of-type(3) {
-    width: 20%;
-    height: 100%;
+    width: 380px;
+    height: 800px;
     position: absolute;
     right: 30px;
 }
@@ -164,13 +182,13 @@ section:nth-of-type(3) {
 }
 
 .room_info {
-    width: 95%;
-    height: 80%;
-    margin-left: 40px;
+    width: 960px;
+    height: 530px;
+    margin-left: 43px;
 }
 
 table {
-    width: 100%;
+    width: 960px;
     font-size: 13px;
     line-height: 45px;
 }
@@ -265,8 +283,8 @@ footer {
 }
 
 #left-footer {
-    width: 45%;
-    height: 80%;
+    width: 900px;
+    height: 110px;
     float: left;
     margin: 20px 0 0 50px;
     line-height: 35px;
@@ -277,8 +295,8 @@ footer {
 }
 
 #right-footer {
-    width: 15%;
-    height: 80%;
+    width: 250px;
+    height: 110px;
     float: right;
     margin-top: 55px;
     margin-right: 70px;
@@ -286,8 +304,8 @@ footer {
 }
 
 #FamilySite {
-    width: 100%;
-    height: 55%;
+    width: 250px;
+    height: 35px;
     border-radius: 10px;
     font-size: 12px;
     padding-left: 12px;
