@@ -61,3 +61,19 @@ day.addEventListener('focus', function(){
         }
     }
 });
+
+// 아이디 중복 확인
+document.getElementById('idCheck').addEventListener('click', function(){
+    console.log("아이디 확인 버튼 활성화")
+
+    const userid = document.getElementById('userid').value;
+    const korean = /^[ㄱ-ㅎ가-힣]+$/;
+
+    if(userid < 4 ){
+        alert("아이디를 4글자 이상 작성하세요.")
+    } else if (korean.test(userid)){
+        alert("영문자와 숫자를 사용해서 작성해주세요.")
+    } else {
+        alert("사용 가능한 아이디입니다.")
+    }
+});

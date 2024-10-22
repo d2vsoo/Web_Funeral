@@ -20,8 +20,9 @@ connectDB.then((client)=>{
 })
 
 // user가 데이터를 보내면 요청.body 안에 넣어주는 기능
-app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+// JSON 형식으로 된 본문 데이터를 파싱할 수 있도록 설정
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 // 서버 띄우기
 app.listen(port, ()=>{
@@ -39,24 +40,9 @@ app.get('/', (요청, 응답) => {
 // 회원가입 페이지 접속
 app.use('/signup', require('./routes/signup.js'))
 
-// 회원가입 유저 정보 입력하기
-app.post('/signup', async(요청, 응답)=>{
-
-    // 회원가입
-    await db.collection('User').insertOne({
-        userId : 요청.body.userid,
-        password : 요청.body.password,
-        username : 요청.body.name,
-        birth : 요청.body.birth,
-        month : 요청.body.month,
-        day : 요청.body.day,
-        num : 요청.body.num01 + '-' + 요청.body.num02 + '-' + 요청.body.num03,
-        email : 요청.body.email01 + '@' + 요청.body.email02,
-        EmployeeNum : 요청.body.enum
-    });
-    console.log("User 데이터 저장 완료")
-    응답.redirect('/')
-});
+// 회원가입 유저 정보 확인하기
+app.post('/signup', (요청, 응답)=>{
+})
 
 // 로그인 페이지 접속
 app.use('/login', require('./routes/login.js'))
