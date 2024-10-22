@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 직원전용 회원가입 | 의정부 을지병원 장례식장 </title>
+    <link rel="stylesheet" href="/public/main.css">
+    <link rel="stylesheet" href="/public/signup.css">
+</head>
+
+<body>
+    <div id="Wrap">
+        <a href="#">
+            <img src="/img/emc.jpg" alt="emc" width="110" class="logo">
+        </a>
+        <div id="signup">
+            <p id="title"> 회원가입 </p>
+            <form action="" method="POST">
+                <div id="ID">
+                    <!-- 아이디 -->
+                    <label for="user-id"> 아이디 </label>
+                    <br>
+                    <!-- required : 필수 입력 필드 지정 -->
+                    <input type="text" id="user-id" name="user-id" required>
+
+                    <!-- 아이디 확인 -->
+                    <div id="ID-check">
+                        <button id="idCheck" type="button"> 아이디 확인 </button>
+                    </div>
+                </div>
+
+                <div id="PW">
+                    <!-- 비밀번호 -->
+                    <label for="password"> 비밀번호 </label>
+                    <br>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <!-- 비밀번호 확인 -->
+                    <label for="password02"> 비밀번호 확인 </label>
+                    <br>
+                    <input type="password" id="password02" name="password02" required>
+
+                    <!-- 비밀번호 확인 버튼 -->
+                    <div id="PW-check">
+                        <button id="pwCheck" type="button"> 비밀번호 확인 </button>
+                    </div>
+                </div>
+
+                <div id="nameForm">
+                    <!-- 사용자 이름 -->
+                    <label for="name"> 이름 </label>
+                    <br>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div id="birthForm">
+                    <!-- 생년월일 -->
+                    <label for="birth"> 생년월일</label>
+                    <br>
+                    <select name="birth" id="birth">
+                        <option disabled selected class="birth"> 출생 연도 </option>
+                    </select>
+                    <select name="month" id="month">
+                        <option disabled selected> 월 </option>
+                    </select>
+                    <select name="day" id="day">
+                        <option disabled selected> 일 </option>
+                    </select>
+                </div>
+
+                <div id="numForm">
+                    <!-- 전화번호 -->
+                    <label for="num"> 전화번호 </label>
+                    <br>
+                    <input type="text" id="num01" name="num" required>
+                    -
+                    <input type="text" id="num02" name="num" required>
+                    -
+                    <input type="text" id="num03" name="num" required>
+                </div>
+
+                <div id="emailForm">
+                    <!-- email -->
+                    <label for="email01"> 이메일 </label>
+                    <br>
+                    <input type="text" id="email01" name="email01" required>
+                    <span> @ </span>
+                    <select name="email02" id="email02">
+                        <option disabled selected> E-mail </option>
+                        <option value="naver.com"> naver.com </option>
+                        <option value="gmail.com"> gmail.com </option>
+                        <option value="daum.net"> daum.net </option>
+                        <option value="nate.com"> nate.com </option>
+                        <option value="text"> 직접 입력하기 </option>
+                    </select>
+                </div>
+
+                <div id="e-numForm">
+                    <!-- 사원번호 -->
+                    <label for="e-num"> 사원번호 </label>
+                    <br>
+                    <input type="text" id="e-num" name="e-num" required>
+
+                    <!-- 사원번호 확인 버튼 -->
+                    <div id="enum-Check">
+                        <button id="e-numCheck" type="button"> 사원번호 확인 </button>
+                    </div>
+                </div>
+                <div id="signup-check"></div>
+                <button type="submit" id="signupCheck">
+                    가입하기
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        /* 생년월일 option 설정 */
+
+        /* 출생연도 select box option 목록 동적 생성하기 */
+        const birth = document.querySelector('#birth');
+        // option 목록 생성 여부 확인
+        isYearOptionExisted = false;
+        // focus : 객체에 포커스가 있을 경우
+        birth.addEventListener('focus', function(){
+            // year 목록이 생성되지 않았을 때 (최초 클릭 시)
+            if(!isYearOptionExisted) {
+                isYearOptionExisted = true;
+                for(var i=1930; i<=2024; i++){
+                    // option element 생성
+                    const yearOption = document.createElement('option')
+                    yearOption.setAttribute('value', i)
+                    yearOption.innerText = i
+
+                    // birth 자식요소로 추가하기
+                    this.appendChild(yearOption);
+                }
+            }
+        });
+
+        /* month select box option 목록 동적 생성하기 */
+        const month = document.querySelector('#month');
+        // option 목록 생성 여부 확인
+        isMonthOptionExisted = false;
+
+        month.addEventListener('focus', function(){
+            if(!isMonthOptionExisted){
+                isMonthOptionExisted = true;
+                for(var j=1; j<=12; j++){
+                    // option element 생성
+                    const monthOption = document.createElement('option')
+                    monthOption.setAttribute('value', j)
+                    monthOption.innerText = j
+
+                    // month 자식요소 추가
+                    this.appendChild(monthOption);
+                }
+            }
+        });
+
+        /* day select box option 목록 동적 생성하기 */
+        const day = document.querySelector('#day');
+        // option 목록 생성 여부 확인
+        isDayOptionExisted = false;
+
+        day.addEventListener('focus', function(){
+            if(!isDayOptionExisted){
+                isDayOptionExisted = true;
+                for(var k=1; k<=31; k++){
+                    //option element 생성
+                    const dayOption = document.createElement('option');
+                    dayOption.setAttribute('value', k)
+                    dayOption.innerText = k
+
+                    //day 자식요소 추가하기
+                    this.appendChild(dayOption);
+
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

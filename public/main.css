@@ -26,6 +26,10 @@ a {
     font-family: 'SUIT-Regular';
 }
 
+button,select {
+    font-family: 'SUIT-Regular';
+}
+
 /* header 영역 */
 header {
     height: 180px;
