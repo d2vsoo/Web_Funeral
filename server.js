@@ -1,28 +1,36 @@
-// MongoDB 연결 Setting Code
-const {MongoClient} = require('mongodb');
+// env 연결
+require('dotenv').config()
 
-let db
-const url = 'mongodb+srv://d2vsoo:Wltn9966love@d2vsoo.irgum.mongodb.net/?retryWrites=true&w=majority&appName=d2vsoo';
+// express library 사용
+const express = require('express');
+const connectDB = require('./database.js');
+const app = express()
 
-new MongoClient(url).connect().then((client)=>{
+// 환경 변수 사용
+const port = process.env.PORT;
+
+connectDB.then((client)=>{
     console.log('db 연결 성공')
     db = client.db('EuljiFunernal')
-
-    // 서버 띄우기
-    app.listen(8080, ()=>{
-        console.log('http://localhost:8080에서 서버 실행 중')
-        console.log(__dirname)
-    });
 }).catch((err)=>{
     console.log(err)
 })
 
-// express library 사용
-const express = require('express')
-const app = express()
+// 서버 띄우기
+app.listen(port, ()=>{
+    console.log('http://localhost:8080에서 서버 실행 중')
+});
 
+// public 정적파일 지정
+app.use(express.static('public'));
 
 // 메인페이지 접속 확인
 app.get('/', (요청, 응답) => {
     응답.sendFile(__dirname + '/views/index.html')
 })
+
+// 회원가입 페이지 접속
+app.use('/signup', require('./routes/signup.js'))
+
+// 로그인 페이지 접속
+app.use('/login', require('./routes/login.js'))
