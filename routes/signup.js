@@ -8,9 +8,5 @@ router.get('/', (요청, 응답) => {
     응답.render('signup.ejs')
 })
 
-router.post('/signup', async(요청, 응답)=>{
-    
-})
-
 // export
 module.exports = router

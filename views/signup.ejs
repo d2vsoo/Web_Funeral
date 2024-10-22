@@ -16,13 +16,13 @@
         </a>
         <div id="signup">
             <p id="title"> 회원가입 </p>
-            <form action="" method="POST">
+            <form action="/signup" method="POST">
                 <div id="ID">
                     <!-- 아이디 -->
-                    <label for="user-id"> 아이디 </label>
+                    <label for="userid"> 아이디 </label>
                     <br>
                     <!-- required : 필수 입력 필드 지정 -->
-                    <input type="text" id="user-id" name="user-id" required>
+                    <input type="text" id="userid" name="userid" required>
 
                     <!-- 아이디 확인 -->
                     <div id="ID-check">
@@ -71,13 +71,13 @@
 
                 <div id="numForm">
                     <!-- 전화번호 -->
-                    <label for="num"> 전화번호 </label>
+                    <label for="number"> 전화번호 </label>
                     <br>
-                    <input type="text" id="num01" name="num" required>
+                    <input type="text" id="num01" name="num01" maxlength="3" required>
                     -
-                    <input type="text" id="num02" name="num" required>
+                    <input type="text" id="num02" name="num02" maxlength="4" required>
                     -
-                    <input type="text" id="num03" name="num" required>
+                    <input type="text" id="num03" name="num03" maxlength="4" required>
                 </div>
 
                 <div id="emailForm">
@@ -98,9 +98,9 @@
 
                 <div id="e-numForm">
                     <!-- 사원번호 -->
-                    <label for="e-num"> 사원번호 </label>
+                    <label for="enum"> 사원번호 </label>
                     <br>
-                    <input type="text" id="e-num" name="e-num" required>
+                    <input type="text" id="enum" name="enum" required>
 
                     <!-- 사원번호 확인 버튼 -->
                     <div id="enum-Check">
@@ -108,14 +108,14 @@
                     </div>
                 </div>
                 <div id="signup-check"></div>
-                <button type="submit" id="signupCheck">
+                <button type="submit" id="signupCheck" >
                     가입하기
                 </button>
             </form>
         </div>
     </div>
 
-    <script src="/public/js/signup.js" type="text/javascript"></script>
+    <script src="/js/signup.js" type="text/javascript"></script>
 </body>
 
 </html>
