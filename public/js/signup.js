@@ -62,18 +62,75 @@ day.addEventListener('focus', function(){
     }
 });
 
-// 아이디 중복 확인
-document.getElementById('idCheck').addEventListener('click', function(){
-    console.log("아이디 확인 버튼 활성화")
+// 아이디 확인 버튼 클릭
+document.querySelector('#idCheck').addEventListener('click', function(){
 
-    const userid = document.getElementById('userid').value;
+    const userid = document.querySelector('#userid').value;
+    console.log(userid);
+    const password = document.querySelector('#password').value;
+    const password02 = document.querySelector('#password02').value;
+    const username = document.querySelector('#name').value;
+    const birth = document.querySelector('#birth').value;
+    const month = document.querySelector('#month').value;
+    const day = document.querySelector('#day').value;
+    const num01 = document.querySelector('#num01').value;
+    const num02 = document.querySelector('#num02').value;
+    const num03 = document.querySelector('#num03').value;
+    const email01 = document.querySelector('#email01').value;
+    const email02 = document.querySelector('#email02').value;
+    const empNum = document.querySelector('#enum').value;
+
     const korean = /^[ㄱ-ㅎ가-힣]+$/;
+    const idText = /^[a-zA-Z0-9]+$/;
 
-    if(userid < 4 ){
-        alert("아이디를 4글자 이상 작성하세요.")
-    } else if (korean.test(userid)){
-        alert("영문자와 숫자를 사용해서 작성해주세요.")
-    } else {
-        alert("사용 가능한 아이디입니다.")
-    }
-});
+    // server.js로 아이디 확인 요청 보내기
+    fetch('/checkId', {
+        method : 'POST',
+        headers : {
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify({
+            userid : document.querySelector('input[name="userid"]').value
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // true일 때
+        if (data.isAvailable) {
+            if (!birth || !month || !day || !email02) {
+                alert ("모든 정보를 입력해주세요.")
+            } else if (userid.length < 4 || userid.length > 12) {
+                alert ("아이디는 총 길이 4~12자로 입력해주세요.")
+            } else if (korean.test(userid) || !idText.test(userid)) {
+                alert ("영문자와 숫자만 입력 가능합니다.")
+            } else {
+                alert('사용 가능한 아이디입니다.')
+            }
+            
+        //false 일 때
+        } else {
+            alert("이미 사용 중인 아이디입니다.")
+        }
+    })
+    .catch(error => {
+        console.error('Error', error);
+    })
+})
+
+// 폼 동작 방지 및 alert 띄우기
+document.querySelector('#userForm').addEventListener('submit', async function(e){
+
+    // 폼 제출 방지
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    const response = await fetch('/signup', {
+        method : 'POST',
+        body : formData
+    })
+
+    const alert = await response.text();
+    document.getElementById('alert').innerHTML = alert;
+
+})
