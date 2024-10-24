@@ -28,27 +28,8 @@ router.get('/', (요청, 응답)=>{
 })
 
 router.post('/', async(요청, 응답, next)=> {
-
-    passport.use(new LocalStrategy({
-
-        usernameField : 'userid',
     
-    }, async(userid, password, cb)=>{
-            
-        let result = await db.collection('User').findOne({userid : userid})
-        console.log(result.password)
-    
-        if(!result){
-            // 회원 인증 실패 시 false
-            return cb(null, false, {message : "가입되지 않은 아이디입니다."})
-        }
-        if (await bcrypt.compare(password, result.password)) {
-            return cb(null, result)
-        } else {
-            return cb(null, false, {message : '비밀번호가 일치하지 않습니다.'})
-        }
-    }))
-    
+    // user 인증 처리
     passport.authenticate('local', (error, user, info)=>{
         // 오류 발생 시 실행
         if (error) return 응답.status(500).json(error)

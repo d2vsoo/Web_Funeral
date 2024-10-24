@@ -42,6 +42,7 @@ app.use(express.static('public'));
 
 // database.js 파일 경로
 const connectDB = require('./database.js');
+const { ObjectId } = require('mongodb');
 
 // =====================================================================
 
@@ -82,7 +83,6 @@ app.post('/signup', async(요청, 응답)=>{
 
     const userid = 요청.body.userid;
     const password = 요청.body.password;
-    const password02 = 요청.body.password02;
     const name = 요청.body.name;
     const year = 요청.body.year;
     const month = 요청.body.month;
@@ -100,8 +100,7 @@ app.post('/signup', async(요청, 응답)=>{
 
     await db.collection('User').insertOne({
         userid : userid,
-        password : password,
-        password02 : password02,
+        password : hash,
         name : name,
         birth : year + '년' + month + '월' + day + '일',
         number : num01 + '-' + num02 + '-' + num03,
@@ -115,3 +114,51 @@ app.post('/signup', async(요청, 응답)=>{
 
 // 로그인 페이지 접속
 app.use('/login', require('./routes/login.js'))
+
+// 아이디/비번이 DB와 일치하는지 검증하는 로직 작성
+passport.use(new LocalStrategy({
+
+    usernameField : 'userid',
+
+}, async(userid, pw, cb)=>{
+        
+    let result = await db.collection('User').findOne({userid : userid})
+
+    if(!result){
+        // 회원 인증 실패 시 false
+        return cb(null, false, {message : "가입되지 않은 아이디입니다."})
+    }
+
+    // 비밀번호 비교 로그 추가
+    console.log("입력 비밀번호:", pw);
+    console.log("DB에 저장된 해시 비밀번호:", result.password);
+
+    if (await bcrypt.compare(pw, result.password)) {
+        return cb(null, result)
+    } else {
+        return cb(null, false, {message : '비밀번호가 일치하지 않습니다.'})
+    }
+}))
+
+// 로그인 세션 생성
+// 로그인 성공 시 자동 세션 생성 및 유저 브라우저에 쿠키 저장하기
+passport.serializeUser((user,done)=>{
+    process.nextTick(()=>{
+        done(null, {id : user._id, userid : user.userid})
+    })
+})
+
+// 유저가 쿠키 제출한 내용을 확인해보기
+passport.deserializeUser(async (user, done)=>{
+    // user 파라미터 출력해서 유저 id 출력되면 db 조회 후 요청.user 안에 넣기
+    let result = await db.collection('User').findOne({_id : new ObjectId(user.id)})
+
+    // password는 필요 없으니까 지워주기
+    delete result.password
+
+    // 비동기적 처리 문법 사용
+    process.nextTick(()=>{
+        return done(null, result)
+        //result가 요청.user안으로 들어가도록 함
+    })
+})
