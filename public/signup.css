@@ -27,17 +27,17 @@
     font-weight: bold;
 }
 
-#ID, #nameForm, #birthForm, #numForm, #emailForm, #e-numForm {
+#ID, #nameForm, #birthForm, #numForm, #emailForm, #empNumForm {
     width: 380px;
     height: 60px;
     margin: 3px auto;
 }
 
-#ID-check, #PW-check, #enum-Check {
+#ID-check, #PW-check, #empNumCheckBox {
     float: right;
 }
 
-#idCheck, #pwCheck, #e-numCheck {
+#idCheck, #pwCheck, #empNumCheck {
     width: 120px;
     height: 30px;
     font-size: 11px;
@@ -57,7 +57,7 @@
     height: 30px;
 }
 
-#idCheck:hover, #pwCheck:hover, #e-numCheck:hover {
+#idCheck:hover, #pwCheck:hover, #empNumCheck:hover {
     background-color: #94adc5;
     color: white;
     cursor: pointer;
@@ -81,8 +81,8 @@ input, select {
     box-sizing: border-box;
 }
 
-#birth, #month, #day {
-    width: 124px;
+#year, #month, #day {
+    width: 105px;
     padding: 0 10px;
 }
 
@@ -120,8 +120,18 @@ input, select {
     cursor: pointer;
 }
 
-.alert {
-    width: 300px;
-    height: 300px;
-    background-color: #94adc5;
+#alert {
+    width: 550px;
+    height: 150px;
+    background-color: rgba(51, 35, 23, 0.308);
+    position: absolute;
+    top: 220px;
+    left: -25px;
+    color: white;
+    font-size: large;
+    display: none;
+}
+
+.alertdisplay {
+    display: block;
 }

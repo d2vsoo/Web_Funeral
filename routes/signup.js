@@ -20,33 +20,58 @@ router.get('/', (요청, 응답) => {
     응답.render('signup.ejs')
 })
 
-router.post('/', async(요청, 응답)=>{
+// 아이디 확인 POST
+router.post('/checkId', async(요청, 응답)=>{
+    const {userid} = 요청.body;
 
-    const userid = 요청.body.userid;
-    const password = 요청.body.password;
-    const password02 = 요청.body.password02;
-    const name = 요청.body.name;
-    const birth = 요청.body.birth;
-    const month = 요청.body.month;
-    const day = 요청.body.day;
-    const num01 = 요청.body.num01;
-    const num02 = 요청.body.num02;
-    const num03 = 요청.body.num03;
-    const email01 = 요청.body.email01;
-    const email02 = 요청.body.email02;
-    const empNum = 요청.body.enum;
+    // db에 userid가 있는지 확인하기
+    const db_user = await db.collection('User').findOne({userid : userid});
 
-    await db.collection('EuljiFunernal').insertOne({
-        userid : userid,
-        password : password,
-        password02 : password02,
-        name : name,
-        birth : birth + '년' + month + '월' + day + '일',
-        number : num01 + '-' + num02 + '-' + num03,
-        email : email01 + '@' + email02,
-        enum : empNum
-    })
-    응답.redirect('/')
+    // user 변수가 존재하면 해당 아이디는 이미 사용 중이라는 의미
+    if (db_user) {
+        // userid는 사용불가
+        return 응답.json({isAvailable : false});
+    // 만약 db에 userid가 없으면
+    } else {
+        // userid는 사용 가능
+        return 응답.json({isAvailable : true});
+    }
+})
+
+// 사원번호 확인 POST
+router.post('/checkEmpNum', async(요청,응답)=>{
+    const {empNum} = 요청.body;
+
+    // db에 empNum이 있는지 확인하기
+    const db_empNum = await db.collection('Employee').findOne({empNum : empNum});
+
+    // db_empNum 변수가 존재하면 
+    // 해당 empNum은 데이터베이스에 저장되어 있음을 의미
+    if (db_empNum){
+        // 해당 empNum이 데이터베이스에 존재할 경우 응답
+        return 응답.json({nonExist : false})
+    } else {
+        // 해당 empNum이 데이터베이스에 존재하지 않을 경우 응답
+        return 응답.json({nonExist : true})
+    }
+})
+
+// User에 같은 사원번호가 있는지 확인하는 POST
+router.post('/checkUserEmpNum', async(요청, 응답)=>{
+
+    const {empNum} = 요청.body;
+
+    // User db에 같은 empNum이 있는지 확인하기
+    const UserDbempNum = await db.collection('User').findOne({empNum : empNum});
+
+    // UserDbempNum이 존재하면 해당 empNum은 데이터베이스에 저장되어있음
+    if(UserDbempNum){
+        // 해당 empNum이 데이터베이스에 존재할 경우 응답
+        return 응답.json({isnonExist : false})
+    } else {
+        // 해당 empNum이 데이터베이스에 존재하지 않을 경우 응답
+        return 응답.json({isnonExist : true})
+    }
 })
 
 // export
