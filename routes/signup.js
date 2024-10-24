@@ -1,6 +1,9 @@
 // setting 변수 생성
 const router = require('express').Router();
 
+// bcrypt 사용
+const bcrypt = require('bcrypt') 
+
 // DB 연결
 let connectDB = require('../database.js');
 const { ObjectId } = require('mongodb');
@@ -44,35 +47,23 @@ router.post('/checkEmpNum', async(요청,응답)=>{
 
     // db에 empNum이 있는지 확인하기
     const db_empNum = await db.collection('Employee').findOne({empNum : empNum});
+    const UserEmpNum = await db.collection('User').findOne({empNum : empNum})
 
     // db_empNum 변수가 존재하면 
     // 해당 empNum은 데이터베이스에 저장되어 있음을 의미
     if (db_empNum){
-        // 해당 empNum이 데이터베이스에 존재할 경우 응답
-        return 응답.json({nonExist : false})
+        if(UserEmpNum){
+            // 해당 empNum이 데이터베이스에 존재할 경우 응답
+            return 응답.json({isnonExist : false})
+        } else {
+            return 응답.json({nonExist : false})
+        }
     } else {
         // 해당 empNum이 데이터베이스에 존재하지 않을 경우 응답
         return 응답.json({nonExist : true})
     }
 })
 
-// User에 같은 사원번호가 있는지 확인하는 POST
-router.post('/checkUserEmpNum', async(요청, 응답)=>{
-
-    const {empNum} = 요청.body;
-
-    // User db에 같은 empNum이 있는지 확인하기
-    const UserDbempNum = await db.collection('User').findOne({empNum : empNum});
-
-    // UserDbempNum이 존재하면 해당 empNum은 데이터베이스에 저장되어있음
-    if(UserDbempNum){
-        // 해당 empNum이 데이터베이스에 존재할 경우 응답
-        return 응답.json({isnonExist : false})
-    } else {
-        // 해당 empNum이 데이터베이스에 존재하지 않을 경우 응답
-        return 응답.json({isnonExist : true})
-    }
-})
 
 // export
 module.exports = router

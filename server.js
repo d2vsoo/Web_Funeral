@@ -9,6 +9,32 @@ const port = process.env.PORT;
 const express = require('express');
 const app = express();
 
+// passport setting
+const session = require('express-session')
+const passport = require('passport')
+const LocalStrategy = require('passport-local')
+
+// hashing
+const bcrypt = require('bcrypt') 
+
+// connect-Mongo 사용
+const MongoStore = require('connect-mongo')
+
+app.use(passport.initialize())
+app.use(session({
+    secret: process.env.COOKIE_SECRET,
+    // 유저의 요청마다 session 갱신 여부
+    resave : false,
+    // 세션 저장 여부
+    saveUninitialized : false,
+    cookie : {maxAge : 1000 * 60 * 60},
+    store : MongoStore.create({
+        mongoUrl : process.env.DB_URL,
+        dbName : 'EuljiFuneral'
+    })
+}))
+
+app.use(passport.session())
 // =====================================================================
 
 // public 정적파일 지정
@@ -67,6 +93,10 @@ app.post('/signup', async(요청, 응답)=>{
     const email01 = 요청.body.email01;
     const email02 = 요청.body.email02;
     const empNum = 요청.body.empNum;
+
+    //hashing
+    hash = await bcrypt.hash(password, 10)
+    console.log(hash)
 
     await db.collection('User').insertOne({
         userid : userid,
