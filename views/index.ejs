@@ -40,7 +40,7 @@
                 </span>
             </div>
             <div id="logo">
-                <a href="#">
+                <a href="/">
                     <img src="/img/logo.png" alt="EMC_LOGO" class="logo" width="400">
                 </a>
             </div>
@@ -59,11 +59,15 @@
                         </a>
                     </button>
                 </div>
-                <div id="user">
+                <div id="userIn" <%= if (loggedIn) { %> style= 'display : none;' <%} %> >
                     <span style="font-weight:600; color:#94adc5;"> 직원 전용 &nbsp; </span>
                     <span class="signup"> <a href="/signup"> 회원가입 </a></span>
                     <span> &nbsp; | &nbsp;</span>
                     <span class="login"> <a href="/login"> 로그인 </a></span>
+                </div>
+
+                <div id="userOut" <%= if (!loggedIn) { %> style= 'display : none;' <%} %> >
+                    <span> <a href="/logout"> 로그아웃 </a></span>
                 </div>
             </nav>
         </header>

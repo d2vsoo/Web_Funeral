@@ -72,11 +72,10 @@ nav {
 }
 
 .search {
-    width: 150px;
-    height: 20px;
+    width: 170px;
+    height: 30px;
     border: 1px solid #7d7d7d;
     border-radius: 5px;
-    margin-top: 10px;
     padding-left: 5px;
     box-sizing: border-box;
     font-size: 12px;
@@ -94,22 +93,28 @@ nav {
     background-color: #94adc5;
 }
 
-#user {
+#userIn {
     font-size: 13px;
     height: 40px;
     padding-top: 10px;
     box-sizing: border-box;
 }
 
-.login:hover {
+#userOut {
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    right: 35px;
+    top: 50px;
+    font-size: 13px;
+}
+
+.login:hover, .signup:hover, #userOut:hover {
     color: rgb(51, 35, 23);
     font-weight: bold;
 }
 
-.signup:hover {
-    color: rgb(51, 35, 23);
-    font-weight: bold;
-}
+
 
 /* menu 영역 */
 #menu {

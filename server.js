@@ -9,6 +9,9 @@ const port = process.env.PORT;
 const express = require('express');
 const app = express();
 
+// ejs 설정
+app.set('view engine', 'ejs');
+
 // passport setting
 const session = require('express-session')
 const passport = require('passport')
@@ -35,6 +38,7 @@ app.use(session({
 }))
 
 app.use(passport.session())
+
 // =====================================================================
 
 // public 정적파일 지정
@@ -70,20 +74,22 @@ connectDB.then((client) => {
 
 // 메인페이지 접속 확인
 app.get('/', (요청, 응답) => {
-    응답.sendFile(__dirname + '/views/index.html')
+    응답.render('index')
 })
 
 // =====================================================================
 
 // 회원가입 페이지 접속
 app.use('/signup', require('./routes/signup.js'))
+// 로그인 라우팅
+app.use('/login', require('./routes/login.js'))
 
 // 회원가입하기
 app.post('/signup', async(요청, 응답)=>{
 
     const userid = 요청.body.userid;
     const password = 요청.body.password;
-    const name = 요청.body.name;
+    const username = 요청.body.username;
     const year = 요청.body.year;
     const month = 요청.body.month;
     const day = 요청.body.day;
@@ -101,7 +107,7 @@ app.post('/signup', async(요청, 응답)=>{
     await db.collection('User').insertOne({
         userid : userid,
         password : hash,
-        name : name,
+        name : username,
         birth : year + '년' + month + '월' + day + '일',
         number : num01 + '-' + num02 + '-' + num03,
         email : email01 + '@' + email02,
@@ -111,9 +117,6 @@ app.post('/signup', async(요청, 응답)=>{
 })
 
 // =====================================================================
-
-// 로그인 페이지 접속
-app.use('/login', require('./routes/login.js'))
 
 // 아이디/비번이 DB와 일치하는지 검증하는 로직 작성
 passport.use(new LocalStrategy({
@@ -154,11 +157,36 @@ passport.deserializeUser(async (user, done)=>{
     let result = await db.collection('User').findOne({_id : new ObjectId(user.id)})
 
     // password는 필요 없으니까 지워주기
-    delete result.password
+    // result가 유효할 때만 delete를 수행하도록 하기
+    if (result && result.password) {
+        delete result.password;
+    }
 
     // 비동기적 처리 문법 사용
     process.nextTick(()=>{
         return done(null, result)
         //result가 요청.user안으로 들어가도록 함
     })
+})
+
+// =====================================================================
+
+// 로그인/로그아웃 상태 확인하기
+function checkLoginout (요청, 응답, next){
+    if (요청.isAuthenticated()) {
+        return next();
+    // 로그인 되지 않은 상태
+    } else {
+        응답.redirect('/login');
+    }
+}
+
+// 메인 페이지 렌더링
+app.get('/', (요청, 응답)=>{
+    if (요청.isAuthenticated()){
+        // 로그인 상태
+        응답.render('index', {loggedIn : true});
+    } else {
+        응답.render('index', {loggedIn : false});
+    }
 })
