@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 직원전용 회원가입 | 의정부 을지병원 장례식장 </title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/signup.css">
+</head>
+
+<body>
+    <div id="Wrap">
+        <a href="/">
+            <img src="/img/emc.jpg" alt="emc" width="110" class="logo">
+        </a>
+        <div id="signup">
+            <p id="title"> 회원가입 </p>
+            <form action="/signup" method="POST" id="userForm">
+                <div id="ID">
+                    <!-- 아이디 -->
+                    <label for="userid"> 아이디 </label>
+                    <br>
+                    <!-- required : 필수 입력 필드 지정 -->
+                    <input type="text" id="userid" name="userid" required>
+
+                    <!-- 아이디 확인 -->
+                    <div id="ID-check">
+                        <button id="idCheck" type="button"> 아이디 확인 </button>
+                    </div>
+                </div>
+
+                <div id="PW">
+                    <!-- 비밀번호 -->
+                    <label for="password"> 비밀번호 </label>
+                    <br>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <!-- 비밀번호 확인 -->
+                    <label for="password02"> 비밀번호 확인 </label>
+                    <br>
+                    <input type="password" id="password02" name="password02" required>
+
+                    <!-- 비밀번호 확인 버튼 -->
+                    <div id="PW-check">
+                        <button id="pwCheck" type="button"> 비밀번호 확인 </button>
+                    </div>
+                </div>
+
+                <div id="nameForm">
+                    <!-- 사용자 이름 -->
+                    <label for="username"> 이름 </label>
+                    <br>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div id="birthForm">
+                    <!-- 생년월일 -->
+                    <label for="birth"> 생년월일</label>
+                    <br>
+                    <input type="text" id="year" name="year" maxlength="4" required>
+                    년
+                    <input type="text" id="month" name="month" maxlength="2" required>
+                    월
+                    <input type="text" id="day" name="day" maxlength="2" required>
+                    일
+                </div>
+
+                <div id="numForm">
+                    <!-- 전화번호 -->
+                    <label for="number"> 전화번호 </label>
+                    <br>
+                    <input type="text" id="num01" name="num01" maxlength="3" required>
+                    -
+                    <input type="text" id="num02" name="num02" maxlength="4" required>
+                    -
+                    <input type="text" id="num03" name="num03" maxlength="4" required>
+                </div>
+
+                <div id="emailForm">
+                    <!-- email -->
+                    <label for="email01"> 이메일 </label>
+                    <br>
+                    <input type="text" id="email01" name="email01" required>
+                    <span> @ </span>
+                    <select name="email02" id="email02">
+                        <option disabled selected> E-mail </option>
+                        <option value="naver.com"> naver.com </option>
+                        <option value="gmail.com"> gmail.com </option>
+                        <option value="daum.net"> daum.net </option>
+                        <option value="nate.com"> nate.com </option>
+                        <option value="text"> 직접 입력하기 </option>
+                    </select>
+                </div>
+
+                <div id="empNumForm">
+                    <!-- 사원번호 -->
+                    <label for="empNum"> 사원번호 </label>
+                    <br>
+                    <input type="text" id="empNum" name="empNum" required>
+
+                    <!-- 사원번호 확인 버튼 -->
+                    <div id="empNumCheckBox">
+                        <button id="empNumCheck" type="button"> 사원번호 확인 </button>
+                    </div>
+                </div>
+                <div id="signup-check"></div>
+                <button type="submit" id="signupCheck">
+                    가입하기
+                </button>
+            </form>
+            <div id="alert"></div>
+        </div>
+    </div>
+    <script src="/js/signup.js" type="text/javascript" ></script>
+</body>
+
+</html>

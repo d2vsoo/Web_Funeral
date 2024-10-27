@@ -1,0 +1,123 @@
+#Wrap {
+    width: 1600px;
+    height: 700px;
+    margin: 90px auto;
+}
+
+.logo {
+    margin-left: 740px;
+}
+
+form {
+    width: 550px;
+    height: 450px;
+    margin: 60px auto;
+    border: 1px solid  rgb(51, 35, 23);
+    border-radius: 15px;
+    position: relative;
+    padding-top: 80px;
+    box-sizing: border-box;
+}
+
+#title {
+    font-size: 23px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    font-weight: bold;
+}
+
+#ID {
+    width: 460px;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#PW {
+    width: 460px;
+    height: 60px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+    margin : 20px 15px 0 15px;
+}
+
+input {
+    width: 340px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    background-color: #94adc534;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+#save-login {
+    width: 105px;
+    height: 23px;
+    margin: 0 0 0 350px;
+}
+
+label[for='save'] {
+    position: relative;
+    font-size: 12px;
+    top: -14px;
+}
+
+input[id='save'] {
+    width: 15px;
+    position: relative;
+    top: -12px;
+}
+
+#login {
+    width: 400px;
+    height: 55px;
+    margin: 10px 0 0 70px;
+    font-size: 18px;
+    font-family: 'SUIT-Regular';
+    border: none;
+    border-radius: 15px;
+    background-color: #94adc5;
+    color: white;
+}
+
+#login:hover {
+    box-shadow: -3px 3px 15px 0 #3e3e3e5b inset;
+    cursor: pointer;
+}
+
+#find {
+    width: 230px;
+    height: 30px;
+    font-size: 12px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#find span:hover {
+    color: #94adc5;
+    font-weight: bold;
+}
+
+#signup {
+    font-size: 13px;
+    font-weight: bold;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    bottom: 15px;
+    right: 60px;
+}
+
+#signup:hover {
+    color: #94adc5;
+}

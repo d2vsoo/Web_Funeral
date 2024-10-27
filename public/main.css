@@ -1,0 +1,368 @@
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#Wrap {
+    width: 1920px;
+    height: 1200px;
+    color: #3e3e3e;
+    font-family: 'SUIT-Regular';
+}
+
+button,select {
+    font-family: 'SUIT-Regular';
+}
+
+/* header 영역 */
+header {
+    height: 180px;
+    padding: 30px 0 0 50px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#FamilyLink01 {
+    width: 800px;
+    height: 30px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+#FamilyLink01 a {
+    color: #7d7d7d;
+}
+
+#FamilyLink01 a:hover {
+    color: #94adc5;
+}
+
+.logo {
+    margin-top: 30px;
+}
+
+/* header 영역 - nav */
+nav {
+    width: 250px;
+    height: 80px;
+    position: absolute;
+    top: 80px;
+    right: 50px;
+    text-align: center;
+}
+
+#search {
+    height: 40px;
+}
+
+.search {
+    width: 170px;
+    height: 30px;
+    border: 1px solid #7d7d7d;
+    border-radius: 5px;
+    padding-left: 5px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.search-send {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.search-send:hover {
+    background-color: #94adc5;
+}
+
+#userIn {
+    font-size: 13px;
+    height: 40px;
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+#userOut {
+    width: 130px;
+    height: 30px;
+    position: absolute;
+    right: 35px;
+    top: 50px;
+    font-size: 13px;
+    display: none;
+}
+
+.login:hover, .signup:hover, #userOut:hover {
+    color: rgb(51, 35, 23);
+    font-weight: bold;
+}
+
+
+
+/* menu 영역 */
+#menu {
+    width: 1920px;
+    height: 45px;
+    z-index: 100;
+}
+
+.mainmenu {
+    float: left;
+    width: 25%;
+    height: 45px;
+    font-size: 14px;
+    text-align: center;
+    padding-top: 12px;
+    box-sizing: border-box;
+    background-color: rgb(51, 35, 23);
+    color: white;
+}
+
+.mainmenu a {
+    width: 100%;
+    display: block;
+}
+
+.mainmenu>a:hover {
+    font-weight: bold;
+}
+
+.submenu {
+    position: absolute;
+    z-index: 100;
+    width: 25%;
+    top: 210px;
+    color: #3e3e3e;
+    display: none;
+}
+
+.submenu li:first-child {
+    margin-top: 15px;
+}
+
+.submenu li {
+    height: 45px;
+    background-color: white;
+    line-height: 42px;
+}
+
+.submenu li:hover {
+    background-color: #94adc5;
+    color: white;
+}
+
+/* main 영역 */
+main {
+    width: 1920px;
+    height: 800px;
+    background: url('/img/candle.jpg') no-repeat center;
+    background-size: cover;
+    position: relative;
+}
+
+#bg-opacity {
+    width: 1920px;
+    height: 800px;
+    background-color: #c3e1fd5e;
+}
+
+/* main 영역 - section01 */
+#section01 {
+    width: 1150px;
+    height: 800px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* 빈소 현황 */
+#situation01 {
+    width: 1050px;
+    height: 650px;
+    background-color: rgb(51, 35, 23);
+    position: absolute;
+    top: 60px;
+    left: 50px;
+    border-radius: 30px;
+    color: white;
+}
+
+.situation-title01 {
+    text-align: center;
+    font-weight: bold;
+    margin: 30px 0;
+    color: white;
+}
+
+.room_info {
+    width: 960px;
+    height: 530px;
+    margin-left: 43px;
+}
+
+table {
+    width: 960px;
+    font-size: 13px;
+    line-height: 45px;
+}
+
+table td {
+    height: 28px;
+    text-align: center;
+    line-height: 60px;
+}
+
+#situation02 {
+    width: 160px;
+    height: 30px;
+    position: absolute;
+    bottom: 50px;
+    right: 60px;
+    color: white;
+}
+
+#situation02 a:hover {
+    color: #94adc5;
+    cursor: pointer;
+}
+
+/* main 영역 - section02 */
+#section02 {
+    width: 400px;
+    height: 800px;
+    position: absolute;
+    top: 0;
+    right: 400px;
+}
+
+#section02 div {
+    width: 320px;
+    height: 45px;
+    background-color: rgb(51, 35, 23);
+    color: white;
+    padding-top: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 15px;
+    position: absolute;
+    left: 40px;
+}
+
+#section02 div:nth-child(1) {
+    bottom: 160px;
+}
+
+#section02 div:nth-child(2) {
+    bottom: 100px;
+}
+
+#section02 a {
+    display: block;
+    width: 100%;
+}
+
+#section02 div:hover {
+    background-color: rgb(231, 231, 231);
+    color: rgb(34, 16, 3);
+    font-size: 18px;
+    box-shadow: 5px 5px 15px 0 #7d7d7d;
+}
+
+/* main 영역 - section03 */
+#section03 {
+    width: 400px;
+    height: 800px;
+    position: absolute;
+    top: 0;
+    right: 30px;
+}
+
+#call {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    bottom: 0;
+}
+
+.call {
+    position: absolute;
+    bottom: 115px;
+    left: 80px;
+    width: 85px;
+}
+
+.call-content {
+    width: 160px;
+    height: 80px;
+    position: absolute;
+    bottom: 120px;
+    right: 80px;
+    text-align: center;
+    line-height: 28px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.call-content p:first-child {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* footer 영역 */
+footer {
+    width: 1920px;
+    height: 150px;
+    background-color: rgb(51, 35, 23);
+    font-size: 14px;
+    color: white;
+}
+
+/* footer 영역 - left footer */
+#left-footer {
+    width: 900px;
+    height: 110px;
+    float: left;
+    margin: 20px 0 0 50px;
+    line-height: 35px;
+}
+
+.footer-link a:hover {
+    color: #94adc5;
+}
+
+/* footer 영역 - right footer */
+#right-footer {
+    width: 300px;
+    height: 150px;
+    float: right;
+    margin-right: 100px;
+    text-align: center;
+}
+
+#FamilySite {
+    width: 250px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: 12px;
+    padding-left: 25px;
+    margin-top: 45px;
+    box-sizing: border-box;
+}
