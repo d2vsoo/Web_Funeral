@@ -163,6 +163,10 @@ document.querySelector('#userForm').addEventListener('submit', function(e){
         e.preventDefault();
         return;
     }
+<<<<<<< HEAD
 })
 
 // =======================================================================
+=======
+})
+>>>>>>> origin/main

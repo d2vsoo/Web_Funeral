@@ -15,6 +15,7 @@ $(document).ready(function () {
     }, function () {
         $(this).stop().slideUp(300);
     });
+<<<<<<< HEAD
 });
 
 // 로그인, 로그아웃 버튼
@@ -42,3 +43,6 @@ document.addEventListener('DOMContentLoaded', async function(){
         alert('서버와의 연결 중 오류가 발생했습니다.');
     }
 })
+=======
+});
+>>>>>>> origin/main
