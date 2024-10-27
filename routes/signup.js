@@ -16,12 +16,16 @@ connectDB.then((client)=>{
     console.log(err)
 });
 
+// =====================================================================
+
 // app > router로 사용
 
 // 회원가입 페이지 접속
 router.get('/', (요청, 응답) => {
     응답.render('signup.ejs')
 })
+
+// =====================================================================
 
 // 아이디 확인 POST
 router.post('/checkId', async(요청, 응답)=>{
@@ -40,6 +44,8 @@ router.post('/checkId', async(요청, 응답)=>{
         return 응답.json({isAvailable : true});
     }
 })
+
+// =====================================================================
 
 // 사원번호 확인 POST
 router.post('/checkEmpNum', async(요청,응답)=>{
@@ -64,6 +70,41 @@ router.post('/checkEmpNum', async(요청,응답)=>{
     }
 })
 
+// =====================================================================
+
+// 회원가입하기
+router.post('/', async(요청, 응답)=>{
+
+    const userid = 요청.body.userid;
+    const password = 요청.body.password;
+    const username = 요청.body.username;
+    const year = 요청.body.year;
+    const month = 요청.body.month;
+    const day = 요청.body.day;
+    const num01 = 요청.body.num01;
+    const num02 = 요청.body.num02;
+    const num03 = 요청.body.num03;
+    const email01 = 요청.body.email01;
+    const email02 = 요청.body.email02;
+    const empNum = 요청.body.empNum;
+
+    //hashing
+    hash = await bcrypt.hash(password, 10)
+    console.log(hash)
+
+    await db.collection('User').insertOne({
+        userid : userid,
+        password : hash,
+        name : username,
+        birth : year + '년' + month + '월' + day + '일',
+        number : num01 + '-' + num02 + '-' + num03,
+        email : email01 + '@' + email02,
+        empNum : empNum
+    })
+    return 응답.redirect('/');
+})
+
+// =====================================================================
 
 // export
 module.exports = router

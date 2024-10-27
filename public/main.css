@@ -107,7 +107,6 @@ nav {
     right: 35px;
     top: 50px;
     font-size: 13px;
-    display: none;
 }
 
 .login:hover, .signup:hover, #userOut:hover {

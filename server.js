@@ -9,12 +9,20 @@ const port = process.env.PORT;
 const express = require('express');
 const app = express();
 
-const path = require('path');
+// =====================================================================
 
 // ejs 설정
 app.set('view engine', 'ejs');
+
+const path = require('path');
+
 app.set('views', path.join(__dirname, 'views'));
 console.log(path.join(__dirname, 'views'))
+
+// public 정적파일 지정
+app.use(express.static('public'));
+
+// =====================================================================
 
 // passport setting
 const session = require('express-session')
@@ -24,8 +32,12 @@ const LocalStrategy = require('passport-local')
 // hashing
 const bcrypt = require('bcrypt') 
 
+// =====================================================================
+
 // connect-Mongo 사용
 const MongoStore = require('connect-mongo')
+
+// =====================================================================
 
 app.use(passport.initialize())
 app.use(session({
@@ -34,10 +46,11 @@ app.use(session({
     resave : false,
     // 세션 저장 여부
     saveUninitialized : false,
-    cookie : {maxAge : 1000 * 60 * 60},
+    cookie : {maxAge : 1000 * 120},
     store : MongoStore.create({
         mongoUrl : process.env.DB_URL,
-        dbName : 'EuljiFuneral_LogInOut'
+        dbName: 'EuljiFunernal',
+        collectionName: 'sessions'
     })
 }))
 
@@ -45,19 +58,9 @@ app.use(passport.session())
 
 // =====================================================================
 
-// public 정적파일 지정
-app.use(express.static('public'));
-
 // database.js 파일 경로
 const connectDB = require('./database.js');
 const { ObjectId } = require('mongodb');
-
-// =====================================================================
-
-// user가 데이터를 보내면 요청.body 안에 넣어주는 기능
-// JSON 형식으로 된 본문 데이터를 파싱할 수 있도록 설정
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 // =====================================================================
 
@@ -76,6 +79,13 @@ connectDB.then((client) => {
 
 // =====================================================================
 
+// user가 데이터를 보내면 요청.body 안에 넣어주는 기능
+// JSON 형식으로 된 본문 데이터를 파싱할 수 있도록 설정
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// =====================================================================
+
 // 메인페이지 접속 확인
 app.get('/', (요청, 응답) => {
     응답.render('index')
@@ -83,42 +93,10 @@ app.get('/', (요청, 응답) => {
 
 // =====================================================================
 
-// 회원가입 페이지 접속
+// 회원가입 라우팅
 app.use('/signup', require('./routes/signup.js'));
 // 로그인 라우팅
 app.use('/login', require('./routes/login.js'));
-
-// 회원가입하기
-app.post('/signup', async(요청, 응답)=>{
-
-    const userid = 요청.body.userid;
-    const password = 요청.body.password;
-    const username = 요청.body.username;
-    const year = 요청.body.year;
-    const month = 요청.body.month;
-    const day = 요청.body.day;
-    const num01 = 요청.body.num01;
-    const num02 = 요청.body.num02;
-    const num03 = 요청.body.num03;
-    const email01 = 요청.body.email01;
-    const email02 = 요청.body.email02;
-    const empNum = 요청.body.empNum;
-
-    //hashing
-    hash = await bcrypt.hash(password, 10)
-    console.log(hash)
-
-    await db.collection('User').insertOne({
-        userid : userid,
-        password : hash,
-        name : username,
-        birth : year + '년' + month + '월' + day + '일',
-        number : num01 + '-' + num02 + '-' + num03,
-        email : email01 + '@' + email02,
-        empNum : empNum
-    })
-    응답.redirect('/')
-})
 
 // =====================================================================
 
@@ -177,3 +155,13 @@ passport.deserializeUser(async (user, done)=>{
 
 // =====================================================================
 
+// 로그아웃
+app.post('/logout', (요청, 응답, next) => {
+    요청.logout((err) => { // 콜백 함수를 추가합니다.
+        if (err) {
+            return next(err); // 로그아웃 중 오류가 발생하면 오류를 처리합니다.
+        }
+        // 로그아웃 성공 후 리디렉션 또는 다른 응답을 보냅니다.
+        응답.redirect('/'); // 예: 홈 페이지로 리디렉션
+    });
+});

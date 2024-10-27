@@ -16,3 +16,29 @@ $(document).ready(function () {
         $(this).stop().slideUp(300);
     });
 });
+
+// 로그인, 로그아웃 버튼
+document.addEventListener('DOMContentLoaded', async function(){
+
+    try {
+        const response = await fetch('/login/CheckLogInOut', {
+            method : 'POST',
+            // session cookie 포함하기
+            credentials : 'include'
+        });
+        
+        const data = await response.json();
+
+        if (data.exist) {
+            // 로그인 성공한 경우 > 로그인 버튼을 로그아웃으로 바꾸기
+            document.querySelector('#userIn').style.display = 'none';
+            document.querySelector('#userOut').style.display = 'block';
+        } else {
+            document.querySelector('#userIn').style.display = 'block';
+            document.querySelector('#userOut').style.display = 'none';
+        }
+    } catch (error) {
+        console.log('오류 발생 : ', error);
+        alert('서버와의 연결 중 오류가 발생했습니다.');
+    }
+})
