@@ -9,7 +9,6 @@ const port = process.env.PORT;
 const express = require('express');
 const app = express();
 
-<<<<<<< HEAD
 // =====================================================================
 
 // ejs 설정
@@ -25,11 +24,6 @@ app.use(express.static('public'));
 
 // =====================================================================
 
-=======
-// ejs 설정
-app.set('view engine', 'ejs');
-
->>>>>>> origin/main
 // passport setting
 const session = require('express-session')
 const passport = require('passport')
@@ -38,7 +32,6 @@ const LocalStrategy = require('passport-local')
 // hashing
 const bcrypt = require('bcrypt') 
 
-<<<<<<< HEAD
 // =====================================================================
 
 // connect-Mongo 사용
@@ -46,11 +39,6 @@ const MongoStore = require('connect-mongo')
 
 // =====================================================================
 
-=======
-// connect-Mongo 사용
-const MongoStore = require('connect-mongo')
-
->>>>>>> origin/main
 app.use(passport.initialize())
 app.use(session({
     secret: process.env.COOKIE_SECRET,
@@ -58,18 +46,11 @@ app.use(session({
     resave : false,
     // 세션 저장 여부
     saveUninitialized : false,
-<<<<<<< HEAD
     cookie : {maxAge : 1000 * 120},
     store : MongoStore.create({
         mongoUrl : process.env.DB_URL,
         dbName: 'EuljiFunernal',
         collectionName: 'sessions'
-=======
-    cookie : {maxAge : 1000 * 60 * 60},
-    store : MongoStore.create({
-        mongoUrl : process.env.DB_URL,
-        dbName : 'EuljiFuneral'
->>>>>>> origin/main
     })
 }))
 
@@ -77,28 +58,12 @@ app.use(passport.session())
 
 // =====================================================================
 
-<<<<<<< HEAD
-=======
-// public 정적파일 지정
-app.use(express.static('public'));
-
->>>>>>> origin/main
 // database.js 파일 경로
 const connectDB = require('./database.js');
 const { ObjectId } = require('mongodb');
 
 // =====================================================================
 
-<<<<<<< HEAD
-=======
-// user가 데이터를 보내면 요청.body 안에 넣어주는 기능
-// JSON 형식으로 된 본문 데이터를 파싱할 수 있도록 설정
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// =====================================================================
-
->>>>>>> origin/main
 // DB 연결
 let db
 connectDB.then((client) => {
@@ -114,7 +79,6 @@ connectDB.then((client) => {
 
 // =====================================================================
 
-<<<<<<< HEAD
 // user가 데이터를 보내면 요청.body 안에 넣어주는 기능
 // JSON 형식으로 된 본문 데이터를 파싱할 수 있도록 설정
 app.use(express.json());
@@ -122,8 +86,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // =====================================================================
 
-=======
->>>>>>> origin/main
 // 메인페이지 접속 확인
 app.get('/', (요청, 응답) => {
     응답.render('index')
@@ -131,49 +93,10 @@ app.get('/', (요청, 응답) => {
 
 // =====================================================================
 
-<<<<<<< HEAD
 // 회원가입 라우팅
 app.use('/signup', require('./routes/signup.js'));
 // 로그인 라우팅
 app.use('/login', require('./routes/login.js'));
-=======
-// 회원가입 페이지 접속
-app.use('/signup', require('./routes/signup.js'))
-// 로그인 라우팅
-app.use('/login', require('./routes/login.js'))
-
-// 회원가입하기
-app.post('/signup', async(요청, 응답)=>{
-
-    const userid = 요청.body.userid;
-    const password = 요청.body.password;
-    const username = 요청.body.username;
-    const year = 요청.body.year;
-    const month = 요청.body.month;
-    const day = 요청.body.day;
-    const num01 = 요청.body.num01;
-    const num02 = 요청.body.num02;
-    const num03 = 요청.body.num03;
-    const email01 = 요청.body.email01;
-    const email02 = 요청.body.email02;
-    const empNum = 요청.body.empNum;
-
-    //hashing
-    hash = await bcrypt.hash(password, 10)
-    console.log(hash)
-
-    await db.collection('User').insertOne({
-        userid : userid,
-        password : hash,
-        name : username,
-        birth : year + '년' + month + '월' + day + '일',
-        number : num01 + '-' + num02 + '-' + num03,
-        email : email01 + '@' + email02,
-        empNum : empNum
-    })
-    응답.redirect('/')
-})
->>>>>>> origin/main
 
 // =====================================================================
 
@@ -189,20 +112,14 @@ passport.use(new LocalStrategy({
     if(!result){
         // 회원 인증 실패 시 false
         return cb(null, false, {message : "가입되지 않은 아이디입니다."})
-<<<<<<< HEAD
         
-=======
->>>>>>> origin/main
     }
 
     // 비밀번호 비교 로그 추가
     console.log("입력 비밀번호:", pw);
     console.log("DB에 저장된 해시 비밀번호:", result.password);
 
-<<<<<<< HEAD
     // 해싱된 비밀번호와 입력 비밀번호 비교하기
-=======
->>>>>>> origin/main
     if (await bcrypt.compare(pw, result.password)) {
         return cb(null, result)
     } else {
@@ -237,36 +154,3 @@ passport.deserializeUser(async (user, done)=>{
 })
 
 // =====================================================================
-
-<<<<<<< HEAD
-// 로그아웃
-app.post('/logout', (요청, 응답, next) => {
-    요청.logout((err) => { // 콜백 함수를 추가합니다.
-        if (err) {
-            return next(err); // 로그아웃 중 오류가 발생하면 오류를 처리합니다.
-        }
-        // 로그아웃 성공 후 리디렉션 또는 다른 응답을 보냅니다.
-        응답.redirect('/'); // 예: 홈 페이지로 리디렉션
-    });
-});
-=======
-// 로그인/로그아웃 상태 확인하기
-function checkLoginout (요청, 응답, next){
-    if (요청.isAuthenticated()) {
-        return next();
-    // 로그인 되지 않은 상태
-    } else {
-        응답.redirect('/login');
-    }
-}
-
-// 메인 페이지 렌더링
-app.get('/', (요청, 응답)=>{
-    if (요청.isAuthenticated()){
-        // 로그인 상태
-        응답.render('index', {loggedIn : true});
-    } else {
-        응답.render('index', {loggedIn : false});
-    }
-})
->>>>>>> origin/main
