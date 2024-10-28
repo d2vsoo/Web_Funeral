@@ -46,7 +46,7 @@ app.use(session({
     resave : false,
     // 세션 저장 여부
     saveUninitialized : false,
-    cookie : {maxAge : 1000 * 120},
+    cookie : {maxAge : 60 * 60 * 1000},
     store : MongoStore.create({
         mongoUrl : process.env.DB_URL,
         dbName: 'EuljiFunernal',
@@ -71,7 +71,7 @@ connectDB.then((client) => {
     db = client.db('EuljiFunernal')
     // 서버 띄우기
     app.listen(port, () => {
-        console.log('지수의 장례식장 리뉴얼 웹페이지 서버 실행 중')
+        console.log('http://localhost:8080에서 서버 실행 중');
     })
 }).catch((err) => {
     console.log(err)

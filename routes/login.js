@@ -105,5 +105,43 @@ router.post('/CheckLogInOut', async (요청, 응답) => {
 
 // =====================================================================
 
+// logout
+router.get('/logout', async(요청, 응답)=>{
+
+    // dbUserId 전역변수 선언
+    let dbUserId;
+    const userSession = await db.collection('sessions').find().toArray();
+
+    userSession.forEach(userSession => {
+        // forEach 내에서만 사용 가능
+        const sessionData = JSON.parse(userSession.session);
+        dbUserId = sessionData.passport.user.id;
+    })
+
+    console.log(typeof(dbUserId))
+
+    if (dbUserId) {
+        console.log("로그아웃합니다.");
+        
+        // 로그아웃을 위해 db에 있는 session 삭제하기
+        await db.collection('sessions').deleteOne({_id : dbUserId});
+        
+        // session 파괴 > 오류 처리
+        요청.session.destroy(err => {
+            if(err){
+                console.log("오류 발생 : ", err);
+                return 응답.status(500).json({error : '서버 오류'});
+            }
+            console.log("로그아웃 성공");
+            응답.redirect('/');
+        });
+    } else {
+        console.log('로그인 상태가 아닙니다.')
+        응답.redirect('/');
+    }
+})
+
+// =====================================================================
+
 // export
 module.exports = router
