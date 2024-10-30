@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 직원 이미지 등록 | 의정부 을지병원 장례식장 </title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/sub_fdImgUpload.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="Wrap">
+        <a href="/">
+            <img src="/img/emc.jpg" alt="emc" width="60" class="logo">
+        </a>
+        <div id="fdImgUpload">
+            <p id="title"> 직원 사진 등록 </p>
+            <!-- 직원 이미지 업로드 -->
+            <!-- enctype="multipart/form-data" >> 인코딩 타입 -->
+            <!-- 파일이 서버로 잘 전송되도록 설정  -->
+            <form action="/signup/imgUpload" class="fdImgForm" method="POST" enctype="multipart/form-data">
+                <div class="fdImgBox"></div>
+                <input type="file" name="fdImg" class="fdImg" accept="image/*">
+
+                <input type="hidden" name="userImgId" value="<%= userImgId %>">
+
+                <button type="submit" id="imgUploadCheck">
+                    가입 완료
+                </button>
+            </form>
+        </div>
+
+
+    </div>
+
+    <script>
+        // 사진 업로드했을 때 미리 볼 수 있도록 하기
+        $(function () {
+            $('.fdImg').change(function (e) {
+                const fdImgs = e.target.files;
+
+                // 기존 이미지 제거하기
+                $('.fdImgBox').empty();
+
+                // 새 img 객체 생성
+                var img = new Image();
+                // 임시 url 생성 
+                var imageTempUrl = window.URL.createObjectURL(fdImgs[0]);
+                img.src = imageTempUrl;
+
+                // 업로드 후 url 해제
+                img.onload = function () {
+                    window.URL.revokeObjectURL(imageTempUrl);
+                };
+
+                $('.fdImgBox').append(img);
+            });
+        });
+
+        // =======================================================================
+        // 사진 미업로드 시, 폼 제출 방지
+        document.querySelector('#signupCheck').addEventListener('click', function (e) {
+            const fdImgfile = document.querySelector('.fdImg').files;
+
+            // 파일이 선택되지 않았을 경우
+            if (fdImgfile.length === 0) {
+                e.preventDefault();
+                alert("이미지를 업로드해주세요.");
+            }
+        })
+    </script>
+</body>
+
+</html>

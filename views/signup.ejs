@@ -7,6 +7,7 @@
     <title> 직원전용 회원가입 | 의정부 을지병원 장례식장 </title>
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="/signup.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -92,7 +93,7 @@
                         <option value="text"> 직접 입력하기 </option>
                     </select>
                 </div>
-
+                
                 <div id="empNumForm">
                     <!-- 사원번호 -->
                     <label for="empNum"> 사원번호 </label>
@@ -104,15 +105,18 @@
                         <button id="empNumCheck" type="button"> 사원번호 확인 </button>
                     </div>
                 </div>
-                <div id="signup-check"></div>
+
+                <div id="signupCheck"></div>
                 <button type="submit" id="signupCheck">
-                    가입하기
+                    다음 페이지로
                 </button>
             </form>
-            <div id="alert"></div>
+
+
+            <!-- <div id="alert"></div> -->
         </div>
     </div>
-    <script src="/js/signup.js" type="text/javascript" ></script>
+    <script src="/js/signup.js" type="text/javascript"></script>
 </body>
 
 </html>

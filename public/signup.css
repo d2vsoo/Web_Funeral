@@ -9,22 +9,26 @@
 }
 
 #signup {
-    width: 500px;
+    width: 450px;
     height: 650px;
     margin: 25px auto;
     border: 1px solid rgb(51, 35, 23);
     border-radius: 15px;
     position: relative;
-    padding-top: 65px;
+    padding-top: 30px;
     box-sizing: border-box;
 }
 
 #title {
     font-size: 18px;
-    position: absolute;
-    top: 25px;
-    left: 50px;
+    text-align: center;
     font-weight: bold;
+}
+
+#userForm {
+    position: absolute;
+    top: 70px;
+    left: 30px;
 }
 
 #ID, #nameForm, #birthForm, #numForm, #emailForm, #empNumForm {
@@ -111,8 +115,8 @@ input, select {
     border-radius: 15px;
     background-color: #94adc5;
     color: white;
-    margin-top: 10px;
-    margin-left: 60px;
+    position: absolute;
+    bottom: -55px;
 }
 
 #signupCheck:hover {
@@ -120,7 +124,7 @@ input, select {
     cursor: pointer;
 }
 
-#alert {
+/* #alert {
     width: 550px;
     height: 150px;
     background-color: rgba(51, 35, 23, 0.308);
@@ -134,4 +138,4 @@ input, select {
 
 .alertdisplay {
     display: block;
-}
+} */

@@ -36,6 +36,8 @@ document.querySelector('#idCheck').addEventListener('click', function(){
     })
 })
 
+// =======================================================================
+
 // 비밀번호 확인
 document.querySelector('#pwCheck').addEventListener('click', function(){
 
@@ -64,6 +66,8 @@ document.querySelector('#pwCheck').addEventListener('click', function(){
         alert("사용 가능한 비밀번호입니다.")
     }
 })
+
+// =======================================================================
 
 // 사원번호 확인
 document.querySelector('#empNumCheck').addEventListener('click', function(){
@@ -106,6 +110,7 @@ document.querySelector('#empNumCheck').addEventListener('click', function(){
     })
 })
 
+// =======================================================================
 
 // 아이디, 비밀번호, 사원번호 확인 버튼을 누르지 않았으면
 // 폼 제출 방지하기
@@ -163,10 +168,6 @@ document.querySelector('#userForm').addEventListener('submit', function(e){
         e.preventDefault();
         return;
     }
-<<<<<<< HEAD
-})
+});
 
 // =======================================================================
-=======
-})
->>>>>>> origin/main

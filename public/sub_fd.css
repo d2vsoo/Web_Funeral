@@ -1,0 +1,38 @@
+#fdbox {
+    width: 1830px;
+    height: 650px;
+    margin: 45px 0 0 30px;
+}
+
+#fdbox_personal {
+    width: 390px;
+    height: 275px;
+    float: left;
+    margin-left: 55px;
+    margin-top: 35px;
+    border: 1px solid rgb(51, 35, 23);
+}
+
+#fdbox_personal img {
+    width: 230px;
+    margin: 3px;
+}
+
+.fd_contents {
+    width: 100px;
+    height: 50px;
+    float: right;
+    text-align: center;
+    margin: 200px 40px 0 0;
+}
+
+.fd_intro {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 30px;
+    color:  rgb(51, 35, 23);
+}
+
+.fd_name {
+    font-size: 16px;
+}

@@ -24,6 +24,44 @@ app.use(express.static('public'));
 
 // =====================================================================
 
+// s3 라이브러리 setting
+const {S3Client} = require('@aws-sdk/client-s3')
+const multer = require('multer')
+const multerS3 = require('multer-s3')
+const s3 = new S3Client({
+    region : process.env.REGION,
+    credentials : {
+        accessKeyId : process.env.ACCESS_KEY_ID,
+        secretAccessKey : process.env.SECRET_ACCESS_KEY
+    }
+})
+
+// 이미지 업로드 구현을 위해 필요한 모듈 multer 설정
+const upload = multer({
+    storage : multerS3({
+        s3 : s3,
+        bucket : process.env.BUCKET_NAME,
+        key : function(요청, file, cb){
+            cb(null, Date.now().toString());
+        }
+    })
+});
+
+// 이미지 파일 저장 위치 및 이름 설정
+const storage = multer.diskStorage({
+    // 업로드할 이미지 파일 저장 경로 (목적지)
+    destination : (요청, file, cb)=>{
+        // fdImg : 폴더명
+        cb(null, path.join(__dirname, 'public'));
+    },
+    filename : (요청, file, cb) =>{
+        cb(null, Date.now().toString());
+    }
+});
+
+module.exports = { upload };
+// =====================================================================
+
 // passport setting
 const session = require('express-session')
 const passport = require('passport')
@@ -91,10 +129,14 @@ app.get('/', (요청, 응답) => {
     응답.render('index')
 })
 
+// 서브페이지 접속 확인
+app.use('/euljifuneral', require('./routes/euljifuneral.js'));
+
 // =====================================================================
 
 // 회원가입 라우팅
 app.use('/signup', require('./routes/signup.js'));
+
 // 로그인 라우팅
 app.use('/login', require('./routes/login.js'));
 

@@ -1,0 +1,65 @@
+#imagebox {
+    width: 650px;
+    height: 650px;
+    /* background-color: #6a5d55; */
+    float: left;
+    margin-top: 30px;
+    margin-left: 50px;
+    position: relative;
+}
+
+#imagebox img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.imagebox3 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#imagebox2 {
+    width: 200px;
+    height: 650px;
+    float: left;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.imagebox3 {
+    width: 250px;
+    height: 150px;
+    background-color: #94adc5;
+    margin-bottom: 17px;
+    cursor: pointer;
+}
+
+#message {
+    width: 850px;
+    height: 650px;
+    float: left;
+    margin-top: 30px;
+    margin-left: 90px;
+    border: 1px solid rgb(51, 35, 23);
+    padding: 30px;
+    box-sizing: border-box;
+    font-size: 18px;
+    color: #3e3e3e;
+}
+
+.messagebox {
+    margin: 16px 0;
+    line-height: 35px;
+}
+
+.messagetitle {
+    font-size: 23px;
+    font-weight: 600;
+    color: rgb(51, 35, 23);
+    margin-bottom: 5px;
+}

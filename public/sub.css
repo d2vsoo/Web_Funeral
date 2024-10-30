@@ -1,0 +1,23 @@
+/* main */
+main {
+    background: none;
+}
+
+#title {
+    width: 260px;
+    height: 40px;
+    text-align: center;
+    padding-top: 8px;
+    box-sizing: border-box;
+    background-color: #5b7d9b;
+    border-radius: 15px;
+    color: white;
+    margin: 40px 0 10px 30px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.submenu li {
+    color: white;
+    background-color: rgb(51, 35, 23);
+}

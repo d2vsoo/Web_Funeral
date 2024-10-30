@@ -16,6 +16,9 @@ connectDB.then((client)=>{
     console.log(err)
 });
 
+// s3 라이브러리 routing
+const { upload } = require('../server.js');
+
 // =====================================================================
 
 // app > router로 사용
@@ -97,10 +100,38 @@ router.post('/', async(요청, 응답)=>{
         email : email01 + '@' + email02,
         empNum : empNum
     })
-    return 응답.redirect('/');
+
+    const imgUploadUrl = `/signup/imgUpload?userid=${userid}`;
+    console.log(imgUploadUrl)
+
+    return 응답.redirect(imgUploadUrl);
 })
 
 // =====================================================================
+
+// 회원가입 - 이미지 업로드 페이지
+router.get('/imgUpload', (요청, 응답)=>{
+
+    // userid 가져오기
+    console.log('url로 가져온 userid : ', 요청.query.userid);
+    const userImgId = 요청.query.userid;
+
+    응답.render('sub_fdImgUpload', {userImgId})
+});
+
+// 회원가입 - 이미지 업로드
+router.post('/imgUpload', upload.single('fdImg'), async(요청, 응답)=>{
+
+    // db에 저장된 userid 가져오기
+    console.log(요청.body.userImgId);
+
+    await db.collection('fdImg').insertOne({
+        // AWS S3에 업로드된 파일 URL 가져오기
+        img : 요청.file.location,
+        userid : 요청.body.userImgId
+    }) 
+    return 응답.redirect('/')
+})
 
 // export
 module.exports = router
