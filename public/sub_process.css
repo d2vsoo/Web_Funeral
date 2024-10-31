@@ -1,0 +1,311 @@
+#Process {
+    width: 100%;
+    height: 100%;
+}
+
+/* 왼쪽 제목 관련 */
+
+#processTitle {
+    width: 230px;
+    height: 660px;
+    float: left;
+    position: relative;
+    top: 40px;
+    left: 50px;
+}
+
+.processTitle {
+    width: 130px;
+    height: 40px;
+    position: absolute;
+    top: 50px;
+    left: 45px;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 12px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.processTitle02 {
+    top: 180px;
+}
+
+.processTitle03 {
+    top: 310px;
+}
+
+.processTitle04 {
+    top: 440px;
+}
+
+.processTitle05 {
+    top: 570px;
+}
+
+.title_border {
+    width: 160px;
+    margin-left: -15px;
+    border: #5b7d9b 1px solid;
+}
+
+.processTitle:hover {
+    color: #5b7d9b;
+    transform: scale(1.05);
+}
+
+/* 오른쪽 내용 관련 */
+#process {
+    width: 1500px;
+    height: 90%;
+    float: right;
+    position: relative;
+    right: 75px;
+}
+
+.processBox {
+    width: 1450px;
+    height: 680px;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    border: 1px solid rgb(51, 35, 23);
+}
+
+.smallbox {
+    width: 1450px;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+}
+
+.smallbox_title {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 30px;
+}
+
+/* 장례 진행 시 준비 서류 */
+
+#smallbox01 {
+    z-index: 2;
+    width: 1430px;
+    height: 380px;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+}
+
+#table01, #table02 {
+    width: 1300px;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td, tr {
+    border: 1px solid #3e3e3e5b;
+}
+
+/* 유족(상주) 준비사항 */
+.smallbox02 {
+    z-index: 2;
+    width: 1430px;
+    height: 300px;
+    position: absolute;
+    top: 390px;
+    left: 10px;
+}
+
+/* 유족 협조사항 */
+.box02 .title03 {
+    margin-top: 45px;
+}
+
+.smallbox-contents {
+    width: 1400px;
+    height: 550px;
+    margin: 30px auto;
+    padding: 30px 0;
+    box-sizing: border-box;
+    line-height: 40px;
+}
+
+.smallbox-contents h5 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 17px;
+}
+
+.smallbox-contents p {
+    margin-left: 330px;
+    text-align: left;
+}
+
+.fa-thumbtack {
+    margin-left: 330px;
+    color: rgb(51, 35, 23);
+}
+
+/* 1일차 장례 */
+
+.fa-paper-plane {
+    margin-right: 5px;
+}
+
+.oneday {
+    width: 1300px;
+    height: 600px;
+    margin: 15px 250px;
+    position: relative;
+}
+
+.oneday h3, .twoday h3, .threeday h3 {
+    width: 260px;
+    height: 60px;
+    font-size: 16px;
+    background-color: rgb(51, 35, 23);
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 75px;
+    left: -30px;
+}
+
+.oneday div:nth-child(1) p {
+    top: 75px;
+    line-height: 30px;
+}
+
+.oneday div:nth-child(2) h3 {
+    top: 260px;
+    background-color: #5b7d9b;
+}
+
+.oneday div:nth-child(2) p {
+    top: 270px;
+    line-height: 30px;
+}
+
+.oneday div:nth-child(3) h3 {
+    top: 445px;
+}
+
+.oneday div:nth-child(3) span:first-of-type {
+    top: 400px;
+}
+
+.oneday div:nth-child(3) p {
+    top: 430px;
+    line-height: 30px;
+}
+
+.oneday div:nth-child(3) span:last-of-type {
+    top: 530px;
+}
+
+.oneday p, .oneday span {
+    font-size: 18px;
+    position: absolute;
+    left: 350px;
+    top: 0;
+}
+
+/* 2일차 장례 */
+.twoday {
+    width: 1300px;
+    height: 600px;
+    margin: 15px 250px;
+    position: relative;
+}
+
+.twoday div:nth-child(1) h5:first-of-type {
+    top: 30px;
+}
+
+.twoday div:nth-child(1) p:first-of-type {
+    top: 60px;
+}
+
+.twoday div:nth-child(1) h5:last-of-type {
+    top: 125px;
+}
+
+.twoday div:nth-child(1) p:last-of-type {
+    top: 155px;
+}
+
+.twoday div:nth-child(2) h3 {
+    top: 260px;
+    background-color: #5b7d9b;
+}
+
+.twoday div:nth-child(2) p {
+    top: 275px;
+}
+
+.twoday div:nth-child(3) h3 {
+    top: 445px;
+}
+
+.twoday div:nth-child(3) ul {
+    top: 430px;
+    line-height: 30px;
+}
+
+.twoday p, .twoday h5, .twoday ul {
+    font-size: 18px;
+    position: absolute;
+    left: 350px;
+    top: 0;
+}
+
+.twoday h5 {
+    color: #5b7d9b;
+}
+
+/* 3일차 장례 */
+
+.threeday {
+    width: 1300px;
+    height: 600px;
+    margin: 15px 250px;
+    position: relative;
+}
+
+.threeday  div:nth-child(1) h3 {
+    top: 65px;
+}
+
+.threeday  div:nth-child(1) ul {
+    top: 70px;
+    line-height: 40px;
+}
+
+.threeday  div:nth-child(1) p {
+    margin-left: 29px;
+}
+
+.threeday  div:nth-child(2) h3 {
+    top: 380px;
+    background-color: #5b7d9b;
+    
+}
+
+.threeday  div:nth-child(2) ul {
+    top: 390px;
+    line-height: 40px;
+}
+
+.threeday  ul {
+    font-size: 18px;
+    position: absolute;
+    left: 350px;
+    top: 0;
+}

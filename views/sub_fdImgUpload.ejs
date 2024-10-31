@@ -59,17 +59,7 @@
             });
         });
 
-        // =======================================================================
-        // 사진 미업로드 시, 폼 제출 방지
-        document.querySelector('#signupCheck').addEventListener('click', function (e) {
-            const fdImgfile = document.querySelector('.fdImg').files;
-
-            // 파일이 선택되지 않았을 경우
-            if (fdImgfile.length === 0) {
-                e.preventDefault();
-                alert("이미지를 업로드해주세요.");
-            }
-        })
+        // ==================================================================
     </script>
 </body>
 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 의정부 을지대병원 장례식장 </title>
+    <link rel="shortcut icon" href="/img/emc.jpg">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/sub.css">
+    <link rel="stylesheet" href="/sub_traffic.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="Wrap">
+        <!-- header 영역 -->
+        <%-include('header.ejs') %>
+
+            <!-- Main -->
+            <main>
+                <div id="title">
+                    오시는 길
+                </div>
+
+                <section>
+                    <div id="map">
+                        <div class="map"></div>
+                        <p> 주소 : (11759) 경기도 의정부시 동일로 712 </p>
+                        <p> TEL : (직통) 031) 951-7444 (교환) 031) 951-7414 </p>
+                        <p> FAX : 031) 951-7420</p>
+                    </div>
+
+                    <div id="trafficpark">
+                        <div id="traffic">
+                            <p class="traffic_title"> 교통편 안내 </p>
+                            <p class="facilities_border"></p>
+                            <div class="traffic_content01">
+                                <p> 지하철 </p>
+                                <span style="background-color: #0d347f; color:white"> 1호선 </span>
+                                <span> &nbsp; 가능역 2번 출구 (도보 10분 거리)</span>
+                                <br>
+                                <span style="background-color: #2985db; color:white"> 경전철 </span>
+                                <span> &nbsp; 동오역 2번 출구 (도보 15분 거리) </span>
+                            </div>
+                            <div class="traffic_content02">
+                                <p> 버스 </p>
+                                <div class="bus01">
+                                    <p> 의정부을지대학교병원 </p>
+                                    <span> 지선버스 34, 56</span>
+                                    <br>
+                                    <span> 마을버스 </span>
+                                    <br>
+                                    <span>201-1, 203-2, 205 </span>
+                                    <br>
+                                    <span> 205-1, 206-3, 207-1, 208-1 </span>
+                                </div>
+                                <div class="bus02">
+                                    <p> 경기도교육청북부청사 </p>
+                                    <span> 지선버스 25-1, 25-2</span>
+                                    <br>
+                                    <span> 마을버스 12 </span>
+                                    <br>
+                                    <span> 시외버스 3700 </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="park">
+                            <p class="traffic_title"> 주차장 안내 </p>
+                            <p class="facilities_border"></p>
+                            <div class="park">
+                                <img src="/img/funeral2_location2.png" alt="주차장안내" width="450">
+                            </div>
+                            <div class="park_content">
+                                <p> 상주 차량 </p>
+                                <p> 특실 1~3호 : 5대 무료 </p>
+                                <p> 일반실 5~12호 : 2대 무료 </p>
+                                <br>
+                                <p> 조문객 차량 </p>
+                                <p>기본료 2,000원 부과 이후 10분당 500원
+                                    <br> (단, 30분 이내 출차시 무료)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- footer 영역 -->
+            <%-include('footer.ejs') %>
+    </div>
+
+    <script src="/js/main.js" type="text/javascript"></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=<%= JAVASCRIPT_KEY %>"></script>
+
+    <script>
+        //지도를 담을 영역의 DOM 레퍼런스
+        var container = document.querySelector('.map');
+        var markerLocation = new kakao.maps.LatLng(37.75278029041067, 127.05024879025231);
+
+        var marker = new kakao.maps.Marker({
+            position : markerLocation
+        })
+
+        //지도를 생성할 때 필요한 기본 옵션
+        var options = {
+            //지도의 중심좌표
+            center: new kakao.maps.LatLng(37.75278029041067, 127.05024879025231),
+            //지도의 레벨(확대, 축소 정도)
+            level: 3
+        };
+
+        //지도 생성 및 객체 리턴
+        var map = new kakao.maps.Map(container, options); 
+
+        marker.setMap(map);
+    </script>
+</body>
+
+</html>

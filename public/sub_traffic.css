@@ -1,0 +1,138 @@
+section {
+    position: relative;
+}
+
+#map {
+    width: 900px;
+    height: 700px;
+    background-color: rgb(51, 35, 23);
+    position: absolute;
+    left: 30px;
+    top: 20px;
+}
+
+#map p {
+    margin-left: 30px;
+    line-height: 30px;
+    color: white;
+}
+
+.map {
+    width: 850px;
+    height: 500px;
+    background-color: #5b7d9b;
+    margin: 23px;
+}
+
+#trafficpark {
+    width: 850px;
+    height: 700px;
+    position: absolute;
+    right: 100px;
+    top: 20px;
+}
+
+.traffic_title {
+    font-size: 21px;
+    margin: 20px 20px 10px 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.facilities_border {
+    width: 160px;
+    border: #5b7d9b 0.5px solid;
+    margin-left: 345px;
+}
+
+#traffic{
+    height: 240px;
+    font-weight: bold;
+}
+
+.traffic_content01 {
+    position: absolute;
+    left: 50px;
+    top: 90px;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.traffic_content01>p {
+    font-weight: bold;
+    color: rgb(51, 35, 23);
+}
+
+.traffic_content02 {
+    width: 450px;
+    position: absolute;
+    left: 380px;
+    top: 90px;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.traffic_content02>p {
+    color: rgb(51, 35, 23);
+    font-weight: bold;
+
+}
+
+.bus01>p {
+    color: #5b7d9b;
+    font-weight: bold;
+}
+
+.bus02>p {
+    color: #5b7d9b;
+    font-weight: bold;
+}
+
+.bus02 {
+    position: absolute;
+    left: 250px;
+    top: 28.5px;
+
+}
+
+#park{
+    height: 450px;
+    margin-top: 35px;
+}
+
+#park>p:nth-child(1) {
+    position: absolute;
+    right: 80px;
+    top: 330px;
+}
+
+#park> p:nth-child(2) {
+    position: absolute;
+    right: 65px;
+    bottom: 310px;
+}
+
+.park {
+    width: 490px;
+    height: 370px;
+    margin: 30px;
+    position: absolute;
+    border: 1px dashed rgb(51, 35, 23);
+}
+
+.park img {
+    margin-left: 30px;
+}
+
+.park_content {
+    position: absolute;
+    right: 0;
+    bottom: 70px;
+    line-height: 30px;
+    font-weight: 600;
+}
+
+.park_content> p:nth-of-type(1), p:nth-of-type(4) {
+    font-size: 16px;
+    color: rgb(51, 35, 23);
+}

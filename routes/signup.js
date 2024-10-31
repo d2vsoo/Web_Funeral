@@ -2,17 +2,17 @@
 const router = require('express').Router();
 
 // bcrypt 사용
-const bcrypt = require('bcrypt') 
+const bcrypt = require('bcrypt')
 
 // DB 연결
 let connectDB = require('../database.js');
 const { ObjectId } = require('mongodb');
 
 let db
-connectDB.then((client)=>{
+connectDB.then((client) => {
     console.log('signup.js에서의 DB 연결 성공')
     db = client.db('EuljiFunernal')
-}).catch((err)=>{
+}).catch((err) => {
     console.log(err)
 });
 
@@ -29,50 +29,50 @@ router.get('/', (요청, 응답) => {
 })
 
 // 아이디 확인 POST
-router.post('/checkId', async(요청, 응답)=>{
-    const {userid} = 요청.body;
+router.post('/checkId', async (요청, 응답) => {
+    const { userid } = 요청.body;
 
     // db에 userid가 있는지 확인하기
-    const db_user = await db.collection('User').findOne({userid : userid});
+    const db_user = await db.collection('User').findOne({ userid: userid });
 
     // user 변수가 존재하면 해당 아이디는 이미 사용 중이라는 의미
     if (db_user) {
         // userid는 사용불가
-        return 응답.json({isAvailable : false});
-    // 만약 db에 userid가 없으면
+        return 응답.json({ isAvailable: false });
+        // 만약 db에 userid가 없으면
     } else {
         // userid는 사용 가능
-        return 응답.json({isAvailable : true});
+        return 응답.json({ isAvailable: true });
     }
 })
 
 // 사원번호 확인 POST
-router.post('/checkEmpNum', async(요청,응답)=>{
-    const {empNum} = 요청.body;
+router.post('/checkEmpNum', async (요청, 응답) => {
+    const { empNum } = 요청.body;
 
     // db에 empNum이 있는지 확인하기
-    const db_empNum = await db.collection('Employee').findOne({empNum : empNum});
-    const UserEmpNum = await db.collection('User').findOne({empNum : empNum})
+    const db_empNum = await db.collection('Employee').findOne({ empNum: empNum });
+    const UserEmpNum = await db.collection('User').findOne({ empNum: empNum })
 
     // db_empNum 변수가 존재하면 
     // 해당 empNum은 데이터베이스에 저장되어 있음을 의미
-    if (db_empNum){
-        if(UserEmpNum){
+    if (db_empNum) {
+        if (UserEmpNum) {
             // 해당 empNum이 데이터베이스에 존재할 경우 응답
-            return 응답.json({isnonExist : false})
+            return 응답.json({ isnonExist: false })
         } else {
-            return 응답.json({nonExist : false})
+            return 응답.json({ nonExist: false })
         }
     } else {
         // 해당 empNum이 데이터베이스에 존재하지 않을 경우 응답
-        return 응답.json({nonExist : true})
+        return 응답.json({ nonExist: true })
     }
 })
 
 // =====================================================================
 
 // 회원가입하기
-router.post('/', async(요청, 응답)=>{
+router.post('/', async (요청, 응답) => {
 
     const userid = 요청.body.userid;
     const password = 요청.body.password;
@@ -92,13 +92,13 @@ router.post('/', async(요청, 응답)=>{
     console.log(hash)
 
     await db.collection('User').insertOne({
-        userid : userid,
-        password : hash,
-        name : username,
-        birth : year + '년' + month + '월' + day + '일',
-        number : num01 + '-' + num02 + '-' + num03,
-        email : email01 + '@' + email02,
-        empNum : empNum
+        userid: userid,
+        password: hash,
+        name: username,
+        birth: year + '년' + month + '월' + day + '일',
+        number: num01 + '-' + num02 + '-' + num03,
+        email: email01 + '@' + email02,
+        empNum: empNum
     })
 
     const imgUploadUrl = `/signup/imgUpload?userid=${userid}`;
@@ -110,26 +110,32 @@ router.post('/', async(요청, 응답)=>{
 // =====================================================================
 
 // 회원가입 - 이미지 업로드 페이지
-router.get('/imgUpload', (요청, 응답)=>{
+router.get('/imgUpload', (요청, 응답) => {
 
     // userid 가져오기
     console.log('url로 가져온 userid : ', 요청.query.userid);
     const userImgId = 요청.query.userid;
 
-    응답.render('sub_fdImgUpload', {userImgId})
+    응답.render('sub_fdImgUpload', { userImgId })
 });
 
 // 회원가입 - 이미지 업로드
-router.post('/imgUpload', upload.single('fdImg'), async(요청, 응답)=>{
+router.post('/imgUpload', upload.single('fdImg'), async (요청, 응답) => {
+
+    if (!요청.file) {
+        console.log('사용자가 이미지 파일을 업로드하지 않았습니다');
+    }
+
+
 
     // db에 저장된 userid 가져오기
     console.log(요청.body.userImgId);
 
     await db.collection('fdImg').insertOne({
         // AWS S3에 업로드된 파일 URL 가져오기
-        img : 요청.file.location,
-        userid : 요청.body.userImgId
-    }) 
+        img: 요청.file.location,
+        userid: 요청.body.userImgId
+    })
     return 응답.redirect('/')
 })
 
