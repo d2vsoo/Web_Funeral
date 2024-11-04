@@ -35,4 +35,12 @@ router.get('/service', (요청, 응답)=>{
     응답.render('sub_service')
 })
 
+router.get('/status', (요청, 응답)=>{
+    응답.render('sub_status')
+})
+
+router.get('/info', (요청, 응답)=>{
+    응답.render('sub_info')
+})
+
 module.exports = router;

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 의정부 을지대병원 장례식장 </title>
+    <link rel="shortcut icon" href="/img/emc.jpg">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/sub.css">
+    <link rel="stylesheet" href="/sub_status.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="Wrap">
+        <!-- header 영역 -->
+        <%-include('header.ejs') %>
+
+            <!-- Main -->
+            <main>
+                <div id="title">
+                    빈소 현황
+                </div>
+
+                <!-- 빈소 현황 -->
+                <section id="page">
+                    <div id="pageWrap">
+                        <div id="page01" class="page">
+                            <div class="status status01">
+                                <h1> 故 000 </h1>
+                                <div class="status-name status-name01">
+                                    <h4> 빈소 </h4>
+                                    <h4> 상주명 </h4>
+                                </div>
+                                <div class="status-name status-name02">
+                                    <h4> 발인일자 </h4>
+                                    <h4> 장지 </h4>
+                                </div>
+                                <div class="status-contents status-contents01">
+                                    <p> 5호실 </p>
+                                    <div class="person-name">
+                                        <div class="person-name-row">
+                                            <span> 조명숙 </span>
+                                            <span> | </span>
+                                            <span> 조경숙 </span>
+                                            <span> | </span>
+                                            <span> 조도숙 </span>
+                                            <span> | </span>
+                                            <span> 조창숙 </span>
+                                            <span> | </span>
+                                            <span> 최현숙 </span>
+                                            <span> | </span>
+                                            <span> 조영철 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="status-contents status-contents02">
+                                    <p> 2024년 11월 15일 &nbsp; <i class="fa-regular fa-clock"></i> 09시 15분 </p>
+                                    <p> 성남영생원 </p>
+                                </div>
+                            </div>
+                            <div class="status status02"></div>
+                            <div class="status status03"></div>
+                            <div class="status status04"></div>
+                        </div>
+                        <div id="page02" class="page">
+                            <div class="status status05"></div>
+                            <div class="status status06"></div>
+                            <div class="status status07"></div>
+                            <div class="status status08"></div>
+                        </div>
+                        <div id="page03" class="page">
+                            <div class="status status09"></div>
+                            <div class="status status10"></div>
+                            <div class="status status11"></div>
+                            <div class="status status12"></div>
+                        </div>
+                        <div id="page04" class="page">
+                            <div class="status status13"></div>
+                            <div class="status status14"></div>
+                            <div class="status status15"></div>
+                            <div class="status status16"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 페이지 이동버튼 만들기 -->
+                <!-- 버튼마다 각각의 페이지 보여주면 됨 -->
+                <section id="pagebutton">
+
+                    <input type="button" id="before" name="pageButton">
+                    <input type="radio" id="pageButton01" name="pageButton">
+                    <input type="radio" id="pageButton02" name="pageButton">
+                    <input type="radio" id="pageButton03" name="pageButton">
+                    <input type="radio" id="pageButton04" name="pageButton">
+                    <input type="button" id="next" name="pageButton">
+
+                    <div id="buttonLabel">
+                        <label for="before" class="btn btn-before">
+                            <i class="fa-solid fa-square-caret-left"></i>
+                        </label>
+                        <label for="pageButton01" class="btn btn01">
+                            <i class="fa-solid fa-1"></i>
+                        </label>
+                        <label for="pageButton02" class="btn btn02"><i class="fa-solid fa-2"></i></label>
+                        <label for="pageButton03" class="btn btn03"><i class="fa-solid fa-3"></i></label>
+                        <label for="pageButton04" class="btn btn04"><i class="fa-solid fa-4"></i></label>
+                        <label for="next" class="btn btn-next">
+                            <i class="fa-solid fa-square-caret-right"></i>
+                        </label>
+                    </div>
+                </section>
+            </main>
+
+            <!-- footer 영역 -->
+            <%-include('footer.ejs') %>
+    </div>
+
+    <script src="/js/main.js" type="text/javascript"></script>
+    <script>
+        // 버튼 1~4를 누르면 각 페이지로 이동하도록 하기
+        // 버튼 before, next를 누르면 옆으로 움직이도록 하기
+
+
+    </script>
+</body>
+
+</html>
