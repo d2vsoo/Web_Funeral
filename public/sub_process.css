@@ -82,10 +82,10 @@
 }
 
 .smallbox_title {
-    font-size: 16px;
+    font-size: 21px;
     font-weight: bold;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 50px;
     line-height: 30px;
 }
 
@@ -96,8 +96,8 @@
     width: 1430px;
     height: 380px;
     position: absolute;
-    top: 20px;
     left: 10px;
+    font-weight: 600;
 }
 
 #table01, #table02 {
@@ -110,14 +110,19 @@ th, td, tr {
     border: 1px solid #3e3e3e5b;
 }
 
+th {
+    color: #5b7d9b;
+}
+
 /* 유족(상주) 준비사항 */
 .smallbox02 {
     z-index: 2;
     width: 1430px;
     height: 300px;
     position: absolute;
-    top: 390px;
+    top: 360px;
     left: 10px;
+    font-weight: 600;
 }
 
 /* 유족 협조사항 */
@@ -156,17 +161,17 @@ th, td, tr {
     margin-right: 5px;
 }
 
-.oneday {
+.oneday, .twoday, .threeday {
     width: 1300px;
     height: 600px;
-    margin: 15px 250px;
+    margin-left: 80px;
     position: relative;
 }
 
 .oneday h3, .twoday h3, .threeday h3 {
     width: 260px;
     height: 60px;
-    font-size: 16px;
+    font-size: 18px;
     background-color: rgb(51, 35, 23);
     color: white;
     border-radius: 50px;
@@ -175,7 +180,7 @@ th, td, tr {
     box-sizing: border-box;
     position: absolute;
     top: 75px;
-    left: -30px;
+    left: 200px;
 }
 
 .oneday div:nth-child(1) p {
@@ -211,20 +216,17 @@ th, td, tr {
 }
 
 .oneday p, .oneday span {
-    font-size: 18px;
+    font-size: 16px;
     position: absolute;
-    left: 350px;
+    left: 590px;
     top: 0;
 }
 
-/* 2일차 장례 */
-.twoday {
-    width: 1300px;
-    height: 600px;
-    margin: 15px 250px;
-    position: relative;
+.plane {
+    color: #5b7d9b;
 }
 
+/* 2일차 장례 */
 .twoday div:nth-child(1) h5:first-of-type {
     top: 30px;
 }
@@ -260,27 +262,15 @@ th, td, tr {
 }
 
 .twoday p, .twoday h5, .twoday ul {
-    font-size: 18px;
+    font-size: 16px;
     position: absolute;
-    left: 350px;
+    left: 590px;
     top: 0;
 }
 
-.twoday h5 {
-    color: #5b7d9b;
-}
-
 /* 3일차 장례 */
-
-.threeday {
-    width: 1300px;
-    height: 600px;
-    margin: 15px 250px;
-    position: relative;
-}
-
 .threeday  div:nth-child(1) h3 {
-    top: 65px;
+    top: 150px;
 }
 
 .threeday  div:nth-child(1) ul {
@@ -293,7 +283,7 @@ th, td, tr {
 }
 
 .threeday  div:nth-child(2) h3 {
-    top: 380px;
+    top: 400px;
     background-color: #5b7d9b;
     
 }
@@ -304,8 +294,8 @@ th, td, tr {
 }
 
 .threeday  ul {
-    font-size: 18px;
+    font-size: 16px;
     position: absolute;
-    left: 350px;
+    left: 590px;
     top: 0;
 }

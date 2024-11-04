@@ -18,7 +18,8 @@ router.get('/introduce', (요청, 응답)=>{
 
 router.get('/director', async(요청, 응답)=>{
     let result = await db.collection('Employee').find().toArray();
-    응답.render('sub_fd', { 직원정보 : result})
+    let fdImg = await db.collection('fdImg').find().toArray();
+    응답.render('sub_fd', { 직원정보 : result, 직원이미지 : fdImg})
 })
 
 router.get('/traffic', (요청, 응답)=>{
@@ -28,6 +29,10 @@ router.get('/traffic', (요청, 응답)=>{
 
 router.get('/process', (요청, 응답)=>{
     응답.render('sub_process')
+})
+
+router.get('/service', (요청, 응답)=>{
+    응답.render('sub_service')
 })
 
 module.exports = router;
