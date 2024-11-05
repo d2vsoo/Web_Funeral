@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 직원전용 회원가입 | 의정부 을지병원 장례식장 </title>
+    <link rel="stylesheet" href="/management.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="Wrap">
+        <a href="/">
+            <img src="/img/emc.jpg" alt="emc" width="110" class="logo">
+        </a>
+
+            <main>
+                <section id="status">
+                    <h3> 빈소현황 </h3>
+                    <table style="border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th> 빈소명 </th>
+                                <th> 고인명 </th>
+                                <th> 상주명 </th>
+                                <th> 발인일자 </th>
+                                <th> 발인시간 </th>
+                                <th> 장지 </th>
+                                <th> 일정 </th>
+                                <th> 삭제 </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% for(var k=0; k < 빈소현황.length; k++){ %>
+                                <tr>
+                                    <td>
+                                        <%= 빈소현황[k].room %>
+                                    </td>
+                                    <td>
+                                        <%= 빈소현황[k].deceasedName %>
+                                    </td>
+                                    <td>
+                                        <div class="sangju sangju01">
+                                            <!-- 빈소현황 for문 -->
+                                            <% for(var i=0; i<빈소현황[k].mournerName.length; i++){ %>
+                                                <span>
+                                                    <%= 빈소현황[k].mournerName[i] %>
+                                                </span>
+                                                <% if (i < 빈소현황[k].mournerName.length - 1) { %>
+                                                    <span> | </span>
+                                                    <% } %>
+                                                        <% } %>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <%= 빈소현황[k].funeralDate %>
+                                    </td>
+                                    <td>
+                                        <%= 빈소현황[k].funeralTime %>
+                                    </td>
+                                    <td>
+                                        <%= 빈소현황[k].funeralPlace %>
+                                    </td>
+                                    <td>
+                                        <%= 빈소현황[k].schedule %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                </section>
+                <section id="register">
+                    <h3> 빈소 등록 </h3>
+                    <form action="/management" id="managementForm" method="POST">
+                        <div id="roomBox">
+                            <h4> 빈&nbsp;소&nbsp;명 </h4>
+                            <select name="room" id="room">
+                                <option disabled selected> 호실 선택 </option>
+                                <option> 1호실 </option>
+                                <option> 2호실 </option>
+                                <option> 3호실 </option>
+                                <option> 5호실 </option>
+                                <option> 6호실 </option>
+                                <option> 7호실 </option>
+                                <option> 8호실 </option>
+                                <option> 9호실 </option>
+                                <option> 10호실 </option>
+                                <option> 11호실 </option>
+                                <option> 12호실 </option>
+                            </select>
+                        </div>
+                        <div id="deceasedBox">
+                            <h4> 고&nbsp;인&nbsp;명 </h4>
+                            <span> 故 </span>
+                            <label for="deceased"></label>
+                            <input type="text" id="deceased" name="deceased" required>
+                        </div>
+                        <div id="mournerBox">
+                            <h4> 상&nbsp;주&nbsp;명 </h4>
+                            <div class="mournerList">
+                                <input type="text" id="mourner01" name="mourner" class="mourner">
+
+                            </div>
+                            <button class="mourner-add"> 추가 </button>
+
+                            <div class="mourner-none">
+                                <input type="radio" name="nonmourner" id="nonmourner" class="non">
+                                <label for="mourner-none"> 상주없음 </label>
+                            </div>
+                        </div>
+
+                        <div id="funeralDateBox">
+                            <h4> 발인일자 </h4>
+                            <input type="date" name="funeralDate" id="funeralDate">
+
+                            <input type="radio" name="nondate" id="nondate" class="non">
+                            <label for="nondate"> 날짜 미정 </label>
+                        </div>
+
+                        <div id="funeralTimeBox">
+                            <h4> 발인시간 </h4>
+                            <input type="time" name="funeralTime" id="funeralTime">
+
+                            <input type="radio" name="nontime" id="nontime" class="non">
+                            <label for="nontime"> 시간 미정 </label>
+                        </div>
+
+                        <div id="funeralPlaceBox">
+                            <h4> 장 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 지 </h4>
+                            <label for="funeralPlace"></label>
+                            <input type="text" name="funeralPlace" id="funeralPlace">
+
+                            <input type="radio" name="nonplace" id="nonplace" class="non">
+                            <label for="nonplace"> 장지 미정 </label>
+                        </div>
+
+                        <div id="scheduleBox">
+                            <h4> 장례일정 </h4>
+                            <select name="schedule" id="schedule">
+                                <option disabled selected> 장례일정 </option>
+                                <option value="1일" name="1day"> 1일 </option>
+                                <option value="2일" name="1day"> 2일 </option>
+                                <option value="3일" name="1day"> 3일 </option>
+                                <option value="4일" name="1day"> 4일 </option>
+                                <option value="5일" name="1day"> 5일 </option>
+                                <option value="6일" name="1day"> 6일 </option>
+                                <option value="7일" name="1day"> 7일 </option>
+                                <option value="보류" name="1day"> 보류 </option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="btn-register">
+                            등록하기
+                        </button>
+                    </form>
+                </section>
+            </main>
+
+            <!-- 로그인한 직원 정보 불러오기 -->
+            <!-- <%= JSON.stringify(접속직원) %> -->
+            <h2>
+                <%= 접속직원[0].name %> 님이 접속 중입니다.
+            </h2>
+    </div>
+
+    <script src="/js/management.js" type="text/javascript"></script>
+</body>
+
+</html>

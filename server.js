@@ -99,6 +99,7 @@ app.use(passport.session())
 // database.js 파일 경로
 const connectDB = require('./database.js');
 const { ObjectId } = require('mongodb');
+const { render } = require('ejs');
 
 // =====================================================================
 
@@ -196,3 +197,66 @@ passport.deserializeUser(async (user, done)=>{
 })
 
 // =====================================================================
+
+// 로그인 후에만 접속 가능한 페이지 라우팅
+app.get('/management', loginOk, async(요청, 응답)=>{
+
+    // 접속 유저 데이터
+    let User = await db.collection('User').find().toArray();
+    // 빈소 현황 데이터
+    let status = await db.collection('Status').find().toArray();
+
+    응답.render('management', {접속직원 : User, 빈소현황 : status});
+});
+
+function loginOk(요청, 응답, next){
+    // 로그인 후 session에 있으면 요청.user가 항상 있는 것
+    if(요청.user){
+        next();
+    } else {
+        요청.send('로그인이 필요합니다.')
+    }
+}
+
+// management - 빈소등록하기
+app.post('/management', async (요청, 응답) => {
+
+    const room = 요청.body.room;
+    const deceased = 요청.body.deceased;
+    let mourner = 요청.body.mourner;
+    const nonmourner = 요청.body.nonmourner;
+    let funeralDate = 요청.body.funeralDate;
+    const nondate = 요청.body.nondate;
+    let funeralTime = 요청.body.funeralTime;
+    const nontime = 요청.body.nontime;
+    let funeralPlace = 요청.body.funeralPlace;
+    const nonplace = 요청.body.nonplace;
+    const schedule = 요청.body.schedule;
+
+    if (nonmourner) {
+        mourner = '상주 미정';
+    } 
+    
+    if (nondate) {
+        funeralDate = '날짜 미정';
+    }
+
+    if (nontime) {
+        funeralTime = '시간 미정';
+    }
+
+    if (nonplace) {
+        funeralPlace = '장지 미정';
+    }
+
+    await db.collection('Status').insertOne({
+        room: room,
+        deceasedName : "故" + " " + deceased,
+        mournerName : mourner,
+        funeralDate : funeralDate,
+        funeralTime : funeralTime,
+        funeralPlace : funeralPlace,
+        schedule : schedule + "장"
+    })
+    return 응답.redirect('management');
+})

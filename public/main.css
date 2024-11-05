@@ -101,15 +101,15 @@ nav {
 }
 
 #userOut {
-    width: 130px;
+    width: 150px;
     height: 30px;
     position: absolute;
-    right: 35px;
+    right: 65px;
     top: 50px;
     font-size: 13px;
 }
 
-.login:hover, .signup:hover, #userOut:hover {
+.login:hover, .signup:hover, .logout:hover, .management:hover {
     color: rgb(51, 35, 23);
     font-weight: bold;
 }
