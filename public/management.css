@@ -74,6 +74,18 @@ td {
     text-align: center;
 }
 
+#deletebtn {
+    font-size: 16px;
+    background: none;
+    border: none;
+}
+
+#deletebtn:hover {
+    color: rgb(51, 35, 23);
+    cursor: pointer;
+    font-weight: 600;
+}
+
 /* 빈소 정보 등록 */
 #register {
     width: 770px;
@@ -86,7 +98,7 @@ td {
     margin-left: 35px;
 }
 
-form {
+#managementForm {
     width: 700px;
     height: 640px;
     margin: 0 auto;

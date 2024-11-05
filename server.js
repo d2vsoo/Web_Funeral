@@ -126,8 +126,11 @@ app.use(express.urlencoded({ extended: true }));
 // =====================================================================
 
 // 메인페이지 접속 확인
-app.get('/', (요청, 응답) => {
-    응답.render('index')
+app.get('/', async(요청, 응답) => {
+
+    const statusDBdata = await db.collection('Status').find().toArray();
+
+    응답.render('index', {빈소현황 : statusDBdata})
 })
 
 // 서브페이지 접속 확인
@@ -223,14 +226,21 @@ app.post('/management', async (요청, 응답) => {
 
     const room = 요청.body.room;
     const deceased = 요청.body.deceased;
+
     let mourner = 요청.body.mourner;
     const nonmourner = 요청.body.nonmourner;
+
+    console.log(mourner)
+
     let funeralDate = 요청.body.funeralDate;
     const nondate = 요청.body.nondate;
+
     let funeralTime = 요청.body.funeralTime;
     const nontime = 요청.body.nontime;
+
     let funeralPlace = 요청.body.funeralPlace;
     const nonplace = 요청.body.nonplace;
+
     const schedule = 요청.body.schedule;
 
     if (nonmourner) {
@@ -257,6 +267,31 @@ app.post('/management', async (요청, 응답) => {
         funeralTime : funeralTime,
         funeralPlace : funeralPlace,
         schedule : schedule + "장"
-    })
+    });
     return 응답.redirect('management');
+})
+
+// 삭제 버튼 누르면 빈소현황 데이터 삭제하기
+app.post('/management/delete', async(요청, 응답)=>{
+    
+    statusDBdata = await db.collection('Status').find().toArray();
+    console.log(statusDBdata);
+
+    const room = statusDBdata[0].room;
+    const deceased = statusDBdata[0].deceasedName;
+    const deletebtn = 요청.body.delete;
+
+    console.log(room)
+    console.log(deceased)
+    console.log(deletebtn)
+
+    // 삭제버튼을 누르면
+    if(deletebtn === 'delete'){
+        // 빈소현황에 있는 같은 데이터를 삭제해줘
+        await db.collection('Status').deleteOne({
+            room : room,
+            deceasedName : deceased
+        })
+    }
+    return 응답.redirect('/management')
 })

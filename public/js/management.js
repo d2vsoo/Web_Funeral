@@ -35,7 +35,7 @@ document.querySelector('#managementForm').addEventListener('submit', function(e)
 
     const deceased = document.querySelector('#deceased').value;
 
-    const mourner = document.querySelector('.mourner').value;
+    const mourner = document.querySelectorAll('.mourner');
     const mournernonbtn = document.querySelector('input[name="nonmourner"]:checked');
 
     const funeralDate = document.querySelector('#funeralDate').value;
@@ -51,8 +51,18 @@ document.querySelector('#managementForm').addEventListener('submit', function(e)
 
     let alertMessage = '';
 
+    // 상주명 빈칸 확인하기
+
+    // 빈칸이 존재하지 않으면 true
+    let mournerValid = true;
+    mourner.forEach(input => {
+        if (input.value.trim() === '') {
+            mournerValid = false;
+        }
+    });
+
     // 필수 입력값 검증하기
-    if (!mourner && !mournernonbtn) {
+    if (!mournerValid && !mournernonbtn) {
         e.preventDefault();
         alertMessage = '상주 정보를 입력해주세요.';
     } else if (!funeralDate && !datenonbtn) {
