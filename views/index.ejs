@@ -22,26 +22,57 @@
                 <div id="situation01">
                     <p class="situation-title01"> 빈소 현황 </p>
                     <div class="room_info">
+
+                        <!-- <%- JSON.stringify(빈소현황) %> -->
                         <table>
                             <tr class="room-infoname">
                                 <th scope="col"> 빈소 </th>
                                 <th scope="col"> 고인명 </th>
                                 <th scope="col"> 상주명 </th>
                                 <th scope="col"> 발인일자 </th>
+                                <th scope="col"> 발인시간 </th>
                                 <th scope="col"> 장지 </th>
                             </tr>
-                            <tr>
-                                <td> 호실 </td>
-                                <td> 누구누구 </td>
-                                <td> 누구누구 </td>
-                                <td> 언제언제 </td>
-                                <td> 어디어디 </td>
-                            </tr>
+
+                            <% 
+                                for(var i=0; i<빈소현황.length; i++){
+                                    %>
+                                    <tr>
+                                        <td> <%= 빈소현황[i].room %> </td>
+                                        <td> <%= 빈소현황[i].deceasedName %> </td>
+                                        <td>
+                                            <% 
+                                            var mournerArray = [];
+                                            for (var j = 0; j < 빈소현황[i].mournerName.length; j += 7) {
+                                                mournerArray.push(빈소현황[i].mournerName.slice(j, j + 7));
+                                            }
+        
+                                            mournerArray.forEach(function(names, index) { 
+                                            %>
+                                            <div class="sangju sangju<%= index + 1 %>">
+                                                <% names.forEach(function(name, subIndex) { %>
+                                                <span><%= name %></span>
+                                                <% if (subIndex < names.length - 1) { %>
+                                                    <span> | </span>
+                                                <% } %>
+                                                <% }); %>
+                                            </div>
+                                            <% }); %>
+                                        </td>
+                                        <td> <%= 빈소현황[i].funeralDate %> </td>
+                                        <td>
+                                            <%= 빈소현황[i].funeralTime %>
+                                        </td>
+                                        <td> <%= 빈소현황[i].funeralPlace %> </td>
+                                    </tr>
+                                    <%
+                                }
+                            %>
                         </table>
                     </div>
                 </div>
                 <div id="situation02">
-                    <a href="#"> >> 빈소현황 자세히 보기 </a>
+                    <a href="/euljifuneral/status"> >> 빈소현황 자세히 보기 </a>
                 </div>
             </section>
 

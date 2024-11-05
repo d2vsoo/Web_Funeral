@@ -39,8 +39,11 @@ router.get('/info', (요청, 응답)=>{
     응답.render('sub_info')
 })
 
-router.get('/status', (요청, 응답)=>{
-    응답.render('sub_status')
+router.get('/status', async(요청, 응답)=>{
+
+    statusDBdata = await db.collection('Status').find().toArray();
+
+    응답.render('sub_status', {빈소현황 : statusDBdata})
 })
 
 module.exports = router;

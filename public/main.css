@@ -214,19 +214,37 @@ main {
 .room_info {
     width: 960px;
     height: 530px;
-    margin-left: 43px;
+    margin-left: 23px;
 }
 
 table {
-    width: 960px;
+    width: 1000px;
     font-size: 13px;
     line-height: 45px;
 }
 
-table td {
+table td{
     height: 28px;
     text-align: center;
-    line-height: 60px;
+    line-height: 23px;
+    padding: 10px 0;
+    border-bottom: 1px solid white;
+}
+
+table td:first-of-type {
+    width: 60px;
+}
+
+table td:nth-of-type(2) {
+    width: 100px;
+}
+
+table td:nth-of-type(3) {
+    width: 540px;
+}
+
+table td:nth-of-type(4), table td:nth-of-type(5), table td:nth-of-type(6) {
+    width: 100px;
 }
 
 #situation02 {

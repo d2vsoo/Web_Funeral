@@ -24,12 +24,14 @@
                     빈소 현황
                 </div>
 
+                <!-- <%- JSON.stringify(빈소현황) %> -->
+
                 <!-- 빈소 현황 -->
                 <section id="page">
                     <div id="pageWrap">
                         <div id="page01" class="page">
                             <div class="status status01">
-                                <h1> 故 000 </h1>
+                                <h1> <%= 빈소현황[0].deceasedName %> </h1>
                                 <div class="status-name status-name01">
                                     <h4> 빈소 </h4>
                                     <h4> 상주명 </h4>
@@ -39,26 +41,16 @@
                                     <h4> 장지 </h4>
                                 </div>
                                 <div class="status-contents status-contents01">
-                                    <p> 5호실 </p>
+                                    <p> <%= 빈소현황[0].room %> </p>
                                     <div class="person-name">
                                         <div class="person-name-row">
-                                            <span> 조명숙 </span>
-                                            <span> | </span>
-                                            <span> 조경숙 </span>
-                                            <span> | </span>
-                                            <span> 조도숙 </span>
-                                            <span> | </span>
-                                            <span> 조창숙 </span>
-                                            <span> | </span>
-                                            <span> 최현숙 </span>
-                                            <span> | </span>
-                                            <span> 조영철 </span>
+                                            <%= 빈소현황[0].mournerName %>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="status-contents status-contents02">
-                                    <p> 2024년 11월 15일 &nbsp; <i class="fa-regular fa-clock"></i> 09시 15분 </p>
-                                    <p> 성남영생원 </p>
+                                    <p> <%= 빈소현황[0].funeralDate %> &nbsp; <i class="fa-regular fa-clock"></i> <%= 빈소현황[0].funeralTime %> </p>
+                                    <p> <%= 빈소현황[0].funeralPlace %> </p>
                                 </div>
                             </div>
                             <div class="status status02"></div>

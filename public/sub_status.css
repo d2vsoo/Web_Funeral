@@ -38,23 +38,28 @@
 .status-name02 {
     position: absolute;
     bottom: 30px;
-    right: 280px;
+    right: 240px;
 }
 
 .status-contents01 {
-    width: 360px;
+    width: 380px;
     height: 200px;
     position: absolute;
     top: 70px;
     left: 120px;
 }
 
+.person-name-row {
+    margin-top: 9px;
+    line-height: 32px;
+}
+
 .status-contents02 {
-    width: 220px;
+    width: 200px;
     height: 100px;
     position: absolute;
     bottom: 30px;
-    right: 40px;
+    right: 20px;
 }
 
 /* 페이지 버튼 관련 css */
