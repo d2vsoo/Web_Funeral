@@ -22,7 +22,6 @@
                 <div id="situation01">
                     <p class="situation-title01"> 빈소 현황 </p>
                     <div class="room_info">
-
                         <!-- <%- JSON.stringify(빈소현황) %> -->
                         <table>
                             <tr class="room-infoname">
@@ -33,7 +32,6 @@
                                 <th scope="col"> 발인시간 </th>
                                 <th scope="col"> 장지 </th>
                             </tr>
-
                             <% 
                                 for(var i=0; i<빈소현황.length; i++){
                                     %>
@@ -41,23 +39,10 @@
                                         <td> <%= 빈소현황[i].room %> </td>
                                         <td> <%= 빈소현황[i].deceasedName %> </td>
                                         <td>
-                                            <% 
-                                            var mournerArray = [];
-                                            for (var j = 0; j < 빈소현황[i].mournerName.length; j += 7) {
-                                                mournerArray.push(빈소현황[i].mournerName.slice(j, j + 7));
-                                            }
-        
-                                            mournerArray.forEach(function(names, index) { 
-                                            %>
-                                            <div class="sangju sangju<%= index + 1 %>">
-                                                <% names.forEach(function(name, subIndex) { %>
-                                                <span><%= name %></span>
-                                                <% if (subIndex < names.length - 1) { %>
-                                                    <span> | </span>
-                                                <% } %>
-                                                <% }); %>
+                                            <div class="sangju sangju<%= i %>">
+                                                <span><%= 빈소현황[0].mournerName[0] %></span>
+                                                <span> 외 <%= 빈소현황[i].mournerName.length - 1 %> 인 </span>
                                             </div>
-                                            <% }); %>
                                         </td>
                                         <td> <%= 빈소현황[i].funeralDate %> </td>
                                         <td>

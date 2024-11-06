@@ -220,31 +220,31 @@ main {
 table {
     width: 1000px;
     font-size: 13px;
-    line-height: 45px;
+    line-height: 23px;
 }
 
 table td{
     height: 28px;
     text-align: center;
-    line-height: 23px;
+    line-height: 30px;
     padding: 10px 0;
     border-bottom: 1px solid white;
 }
 
 table td:first-of-type {
-    width: 60px;
+    width: 100px;
 }
 
 table td:nth-of-type(2) {
-    width: 100px;
+    width: 150px;
 }
 
 table td:nth-of-type(3) {
-    width: 540px;
+    width: 300px;
 }
 
 table td:nth-of-type(4), table td:nth-of-type(5), table td:nth-of-type(6) {
-    width: 100px;
+    width: 150px;
 }
 
 #situation02 {

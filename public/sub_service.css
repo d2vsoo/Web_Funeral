@@ -122,19 +122,16 @@ article h2 {
 .place03 h3 {
     position: absolute;
     top: 260px;
-    right: 610px;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-th, td, tr {
-    border: 1px solid #3e3e3e5b;
+    right: 620px;
 }
 
 .floor {
+    border-collapse: collapse;
     position: absolute;
+}
+
+.floor th, .floor td, .floor tr {
+    border: 1px solid #3e3e3e5b;
 }
 
 .floor01 {
@@ -149,7 +146,7 @@ th, td, tr {
 
 .floor03 {
     top: 260px;
-    right: 170px;
+    right: 135px;
 }
 
 /* 빈소이용료 */
@@ -185,6 +182,10 @@ th, td, tr {
     position: absolute;
     top: 122px;
     right: 110px;
+}
+
+.parlor th, .parlor td, .parlor tr {
+    border: 1px solid #3e3e3e5b;
 }
 
 /* 편의시설 및 서비스 안내 */

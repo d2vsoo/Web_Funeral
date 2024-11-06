@@ -29,11 +29,11 @@
                             장례지도사 소개
                         </div>
                         <div id="fdbox">
-
                             <!-- ejs 반복문으로 직원정보 가져오기 -->
                             <% for (var i=0; i < 직원정보.length; i++){ %>
                                 <div id="fdbox_personal">
-                                    <img src="<%= 직원이미지[0].img %>" alt="fd_image" class="fd_img">
+                                    <!-- 직원 이미지가 존재하면 이미지fh, 직원 이미지가 존재하지 않으면 기본 이미지로 -->
+                                    <img src="<%= 직원이미지[i] && 직원이미지[i].img ? 직원이미지[i].img : '/img/default.png' %>" alt="fd_image" class="fd_img">
                                     <div class="fd_contents">
                                         <p class="fd_intro">
                                             <%= 직원정보[i].empLevel %>
@@ -44,7 +44,6 @@
                                     </div>
                                 </div>
                                 <% } %>
-
                         </div>
                     </main>
 

@@ -106,7 +106,12 @@
     border-collapse: collapse;
 }
 
-th, td, tr {
+#table01 th, #table01 td, #table01 tr {
+    border: 1px solid #3e3e3e5b;
+}
+
+#table02 th, #table02 td, #table02 tr {
+    width: 300px;
     border: 1px solid #3e3e3e5b;
 }
 
