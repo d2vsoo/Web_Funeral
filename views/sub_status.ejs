@@ -30,56 +30,174 @@
                 <section id="page">
                     <div id="pageWrap">
                         <div id="page01" class="page">
-                            <div class="status status01">
-                                <h1> <%= 빈소현황[0].deceasedName %> </h1>
-                                <div class="status-name status-name01">
-                                    <h4> 빈소 </h4>
-                                    <h4> 상주명 </h4>
-                                </div>
-                                <div class="status-name status-name02">
-                                    <h4> 발인일자 </h4>
-                                    <h4> 장지 </h4>
-                                </div>
-                                <div class="status-contents status-contents01">
-                                    <p> <%= 빈소현황[0].room %> </p>
-                                    <div class="person-name">
-                                        <div class="person-name-row">
-                                            <%= 빈소현황[0].mournerName %>
+                            <%
+                                for(var i=0; i<4; i++){
+                                    var statusData = 빈소현황[i] || {};
+                                %>
+                                    <div class="status status0<%= i %>">
+                                        <h1>
+                                            <%= statusData.deceasedName || '' %>
+                                        </h1>
+                                        <div class="status-name status-name01">
+                                            <h4> 빈소 </h4>
+                                            <h4> 상주명 </h4>
+                                        </div>
+                                        <div class="status-name status-name02">
+                                            <h4> 발인일자 </h4>
+                                            <h4> 장지 </h4>
+                                        </div>
+                                        <div class="status-contents status-contents01">
+                                            <p>
+                                                <%= statusData.room  || '' %>
+                                            </p>
+                                            <div class="person-name">
+                                                <div class="person-name-row">
+                                                    <%= statusData.mournerName  || '' %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="status-contents status-contents02">
+                                            <p>
+                                                <%= statusData.funeralDate  || ''  %> &nbsp; <i class="fa-regular fa-clock"></i>
+                                                    <%= statusData.funeralTime  || ''  %>
+                                            </p>
+                                            <p>
+                                                <%= statusData.funeralPlace  || ''  %>
+                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="status-contents status-contents02">
-                                    <p> <%= 빈소현황[0].funeralDate %> &nbsp; <i class="fa-regular fa-clock"></i> <%= 빈소현황[0].funeralTime %> </p>
-                                    <p> <%= 빈소현황[0].funeralPlace %> </p>
-                                </div>
-                            </div>
-                            <div class="status status02"></div>
-                            <div class="status status03"></div>
-                            <div class="status status04"></div>
+                                <% 
+                                }
+                            %>
                         </div>
                         <div id="page02" class="page">
-                            <div class="status status05"></div>
-                            <div class="status status06"></div>
-                            <div class="status status07"></div>
-                            <div class="status status08"></div>
+                            <%
+                                for(var i=4; i<8; i++){
+                                    var statusData = 빈소현황[i] || {};
+                                %>
+                                    <div class="status status0<%= i %>">
+                                        <h1>
+                                            <%= statusData.deceasedName || '' %>
+                                        </h1>
+                                        <div class="status-name status-name01">
+                                            <h4> 빈소 </h4>
+                                            <h4> 상주명 </h4>
+                                        </div>
+                                        <div class="status-name status-name02">
+                                            <h4> 발인일자 </h4>
+                                            <h4> 장지 </h4>
+                                        </div>
+                                        <div class="status-contents status-contents01">
+                                            <p>
+                                                <%= statusData.room  || '' %>
+                                            </p>
+                                            <div class="person-name">
+                                                <div class="person-name-row">
+                                                    <%= statusData.mournerName  || '' %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="status-contents status-contents02">
+                                            <p>
+                                                <%= statusData.funeralDate  || ''  %> &nbsp; <i class="fa-regular fa-clock"></i>
+                                                    <%= statusData.funeralTime  || ''  %>
+                                            </p>
+                                            <p>
+                                                <%= statusData.funeralPlace  || ''  %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                <% 
+                                }
+                            %>
                         </div>
                         <div id="page03" class="page">
-                            <div class="status status09"></div>
-                            <div class="status status10"></div>
-                            <div class="status status11"></div>
-                            <div class="status status12"></div>
+                            <%
+                                for(var i=8; i<12; i++){
+                                    var statusData = 빈소현황[i] || {};
+                                %>
+                                    <div class="status status0<%= i %>">
+                                        <h1>
+                                            <%= statusData.deceasedName || '' %>
+                                        </h1>
+                                        <div class="status-name status-name01">
+                                            <h4> 빈소 </h4>
+                                            <h4> 상주명 </h4>
+                                        </div>
+                                        <div class="status-name status-name02">
+                                            <h4> 발인일자 </h4>
+                                            <h4> 장지 </h4>
+                                        </div>
+                                        <div class="status-contents status-contents01">
+                                            <p>
+                                                <%= statusData.room  || '' %>
+                                            </p>
+                                            <div class="person-name">
+                                                <div class="person-name-row">
+                                                    <%= statusData.mournerName  || '' %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="status-contents status-contents02">
+                                            <p>
+                                                <%= statusData.funeralDate  || ''  %> &nbsp; <i class="fa-regular fa-clock"></i>
+                                                    <%= statusData.funeralTime  || ''  %>
+                                            </p>
+                                            <p>
+                                                <%= statusData.funeralPlace  || ''  %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                <% 
+                                }
+                            %>
                         </div>
                         <div id="page04" class="page">
-                            <div class="status status13"></div>
-                            <div class="status status14"></div>
-                            <div class="status status15"></div>
-                            <div class="status status16"></div>
+                            <%
+                                for(var i=12; i<16; i++){
+                                    var statusData = 빈소현황[i] || {};
+                                %>
+                                    <div class="status status0<%= i %>">
+                                        <h1>
+                                            <%= statusData.deceasedName || '' %>
+                                        </h1>
+                                        <div class="status-name status-name01">
+                                            <h4> 빈소 </h4>
+                                            <h4> 상주명 </h4>
+                                        </div>
+                                        <div class="status-name status-name02">
+                                            <h4> 발인일자 </h4>
+                                            <h4> 장지 </h4>
+                                        </div>
+                                        <div class="status-contents status-contents01">
+                                            <p>
+                                                <%= statusData.room  || '' %>
+                                            </p>
+                                            <div class="person-name">
+                                                <div class="person-name-row">
+                                                    <%= statusData.mournerName  || '' %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="status-contents status-contents02">
+                                            <p>
+                                                <%= statusData.funeralDate  || ''  %> &nbsp; <i class="fa-regular fa-clock"></i>
+                                                    <%= statusData.funeralTime  || ''  %>
+                                            </p>
+                                            <p>
+                                                <%= statusData.funeralPlace  || ''  %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                <% 
+                                }
+                            %>
                         </div>
                     </div>
                 </section>
 
-                <!-- 페이지 이동버튼 만들기 -->
-                <!-- 버튼마다 각각의 페이지 보여주면 됨 -->
+                <%# 페이지 이동버튼 만들기 %>
+                <%# 버튼마다 각각의 페이지 보여주면 됨 %>
                 <section id="pagebutton">
 
                     <input type="button" id="before" name="pageButton">
@@ -106,17 +224,13 @@
                 </section>
             </main>
 
-            <!-- footer 영역 -->
-            <%-include('footer.ejs') %>
+            <%# footer 영역 %>
+            <%- include('footer.ejs') %>
     </div>
 
     <script src="/js/main.js" type="text/javascript"></script>
-    <script>
-        // 버튼 1~4를 누르면 각 페이지로 이동하도록 하기
-        // 버튼 before, next를 누르면 옆으로 움직이도록 하기
+    <script src="/js/status.js" type="text/javascript"></script>
 
-
-    </script>
 </body>
 
 </html>
