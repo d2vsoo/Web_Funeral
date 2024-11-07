@@ -114,8 +114,6 @@ nav {
     font-weight: bold;
 }
 
-
-
 /* menu 영역 */
 #menu {
     width: 1920px;
@@ -221,6 +219,13 @@ table {
     width: 1000px;
     font-size: 13px;
     line-height: 23px;
+    border-collapse: collapse;
+}
+
+table th {
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid white;
 }
 
 table td{

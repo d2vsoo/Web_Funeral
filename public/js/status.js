@@ -3,6 +3,11 @@ const btn2 = document.querySelector('#pageButton02');
 const btn3 = document.querySelector('#pageButton03');
 const btn4 = document.querySelector('#pageButton04');
 
+// status로 이동하면 바로 보이는 빈소현황이 1page이도록 설정하기
+window.onload = function(){
+    document.querySelector('#pageWrap').style.transform = 'translateX(0)';
+}
+
 // 버튼 1~4를 누르면 각 페이지로 이동하도록 하기
 btn1.addEventListener('click', function(){
     document.querySelector('#pageWrap').style.transform = 'translateX(0)';

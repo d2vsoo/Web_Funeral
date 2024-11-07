@@ -126,8 +126,6 @@ router.post('/imgUpload', upload.single('fdImg'), async (요청, 응답) => {
         console.log('사용자가 이미지 파일을 업로드하지 않았습니다');
     }
 
-
-
     // db에 저장된 userid 가져오기
     console.log(요청.body.userImgId);
 

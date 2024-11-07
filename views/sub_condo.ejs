@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 의정부 을지대병원 장례식장 </title>
+    <link rel="shortcut icon" href="/img/emc.jpg">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/sub.css">
+    <link rel="stylesheet" href="/sub_condo.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="Wrap">
+        <!-- header 영역 -->
+        <%-include('header.ejs') %>
+
+            <!-- Main -->
+            <main>
+                <div id="title">
+                    조문하기
+                </div>
+                <section id="condoBoard">
+                    <div class="condoinfo">
+                        <p>
+                            <i class="fa-solid fa-lightbulb"></i>
+                            조문 글은 장례기간동안만 작성이 가능하며, 작성 시 빈소 호수 입력 후 고인명을 정확히 확인해주시기 바랍니다.
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-lightbulb"></i>
+                                조문글 작성 시 필요한 비밀번호는 부고문자에 포함되어있으니 확인하신 후 입력바랍니다.
+                        </p>
+                    </div>
+
+                    <h3> 조문 게시판 </h3>
+
+                    <a href="/euljifuneral/condolences/write">
+                        <button type="button" id="write" name="write" value="write" > 작성하기 </button>
+                    </a>
+                    
+                    <!-- <%- JSON.stringify(조문게시판) %> -->
+
+                    <div class="hiddenbox">
+                        <div class="boardBox">
+                            <div class="board board01">
+                                <table class="boardTable">
+                                    <thead class="boardthead">
+                                        <tr class="tabletr tabletitle">
+                                            <th> 번호 </th>
+                                            <th> 빈소 </th>
+                                            <th> 고인명 </th>
+                                            <th> 제목 </th>
+                                            <th> 작성자 </th>
+                                            <th> 작성일자 </th>
+                                            <th> 수정하기 </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="boardtbody">
+                                        <% 
+                                            for(var i=0; i < 조문게시판.length; i++){
+                                                %>
+                                                <tr class="tabletr tablecontents">
+                                                    <td> <%= (현재페이지-1) * 12 +i + 1 %> </td>
+                                                    <td> <%= 조문게시판[i].roomNum %> </td>
+                                                    <td> <%= 조문게시판[i].deceasedName %> </td>
+                                                    <td> 
+                                                        <a href="/euljifuneral//condolences/detail/<%= 조문게시판[i]._id %>"><%= 조문게시판[i].title %></a> </td>
+                                                    <td> <%= 조문게시판[i].writer %> </td>
+                                                    <td> <%= 조문게시판[i].date %> </td>
+                                                    <td>
+                                                        <a href="/euljifuneral/condolences/edit/<%= 조문게시판[i]._id %>"> 수정하기 </a>
+                                                    </td>
+                                                </tr>
+                                                <%
+                                            }
+                                        %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="boardBtn">
+
+                    <% if(현재페이지 = 1){ %>
+                        <button type="button" name="boardbtn" class="boardbtn beforebtn" onclick="location.href='/euljifuneral/condolences/list/<%= 1 %>'"> 이전 </button>
+                        <% } else if(현재페이지 > 1){ %>
+                        <button type="button" name="boardbtn" class="boardbtn beforebtn" onclick="location.href='/euljifuneral/condolences/list/<%= 현재페이지-1 %>'"> 이전 </button>
+                        <% } %>
+
+                    <% if(현재페이지 = 1){ %>
+                        <button type="button" name="boardbtn" class="boardbtn beforebtn" onclick="location.href='/euljifuneral/condolences/list/<%= 현재페이지+1 %>'"> 다음 </button>
+                        <% } else if (현재페이지 < 전체페이지) { %>
+                        <button type="button" onclick="location.href='/euljifuneral/condolences/list/<%= 현재페이지 + 1 %>'"> 다음 </button>
+                    <% } %>
+                </div>
+
+            </main>
+
+            <%# footer 영역 %>
+            <%- include('footer.ejs') %>
+    </div>
+
+    <script src="/js/main.js" type="text/javascript"></script>
+
+</body>
+
+</html>
