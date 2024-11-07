@@ -51,6 +51,7 @@
 
 .boardTable td {
     padding: 3.2px 0;
+    box-sizing: border-box;
     border-bottom: 1px solid rgba(51, 35, 23, 0.5);
 }
 
@@ -81,16 +82,32 @@
     width: 150px;
 }
 
-.boardTable td:last-of-type {
+.boardTable td:nth-of-type(7) {
     width: 100px;
 }
 
-.boardTable td:last-of-type:hover {
+.boardTable th:nth-of-type(8) {
+    width: 100px;
+}
+
+.boardTable td:nth-of-type(7):hover {
     color: #5b7d9b;
     font-weight: 600;
 }
 
 .tablecontents td:nth-last-of-type(4):hover {
+    font-weight: 600;
+}
+
+#deletebtn {
+    font-size: 13px;
+    background: none;
+    border: none;
+}
+
+#deletebtn:hover {
+    color: rgb(51, 35, 23);
+    cursor: pointer;
     font-weight: 600;
 }
 

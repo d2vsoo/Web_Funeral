@@ -106,6 +106,30 @@ router.post('/condolences/write', async (요청, 응답) => {
     응답.redirect('/euljifuneral/condolences/list/1');
 });
 
+// 게시글 삭제 post
+router.post('/condolences/delete', async(요청, 응답)=>{
+    boardDBdata = await db.collection('condoBoard').find().toArray();
+    console.log(boardDBdata);
+
+    const roomNum = boardDBdata[0].roomNum;
+    const writer = boardDBdata[0].writer;
+    const deletebtn = 요청.body.delete;
+
+    console.log(roomNum)
+    console.log(writer)
+    console.log(deletebtn)
+
+    // 삭제버튼을 누르면
+    if(deletebtn === 'delete'){
+        // 빈소현황에 있는 같은 데이터를 삭제해줘
+        await db.collection('condoBoard').deleteOne({
+            roomNum : roomNum,
+            writer : writer
+        })
+    }
+    return 응답.redirect('/euljifuneral/condolences/list/1')
+})
+
 router.get('/thanks', (요청, 응답) => {
     응답.render('sub_thanks')
 })

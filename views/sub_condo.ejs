@@ -56,6 +56,7 @@
                                             <th> 작성자 </th>
                                             <th> 작성일자 </th>
                                             <th> 수정하기 </th>
+                                            <th> 삭제하기 </th>
                                         </tr>
                                     </thead>
                                     <tbody class="boardtbody">
@@ -71,7 +72,12 @@
                                                     <td> <%= 조문게시판[i].writer %> </td>
                                                     <td> <%= 조문게시판[i].date %> </td>
                                                     <td>
-                                                        <a href="/euljifuneral/condolences/edit/<%= 조문게시판[i]._id %>"> 수정하기 </a>
+                                                        <a href="/euljifuneral/condolences/edit/<%= 조문게시판[i]._id %>"> 수정 </a>
+                                                    </td>
+                                                    <td>
+                                                        <form action="/euljifuneral/condolences/delete" method="POST" id="deleteForm">
+                                                            <button type="submit" id="deletebtn" name="delete" value="delete"> 삭제 </button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                                 <%
