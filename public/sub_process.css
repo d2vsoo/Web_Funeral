@@ -115,8 +115,10 @@
     border: 1px solid #3e3e3e5b;
 }
 
-th {
+#table01 th {
     color: #5b7d9b;
+    padding-top: 10px;
+    box-sizing: border-box;
 }
 
 /* 유족(상주) 준비사항 */

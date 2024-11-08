@@ -9,6 +9,10 @@ const port = process.env.PORT;
 const express = require('express');
 const app = express();
 
+// method 강제 변경 라이브러리
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 // =====================================================================
 
 // ejs 설정

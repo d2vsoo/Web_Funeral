@@ -134,6 +134,10 @@ article h2 {
     border: 1px solid #3e3e3e5b;
 }
 
+.floor th {
+    padding-top: 10px;
+}
+
 .floor01 {
     top: 100px;
     left: 320px;
@@ -186,6 +190,10 @@ article h2 {
 
 .parlor th, .parlor td, .parlor tr {
     border: 1px solid #3e3e3e5b;
+}
+
+.parlor th {
+    padding-top: 10px;
 }
 
 /* 편의시설 및 서비스 안내 */

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 의정부 을지대병원 장례식장 </title>
+    <link rel="shortcut icon" href="/img/emc.jpg">
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/sub.css">
+    <link rel="stylesheet" href="/sub_condodetail.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="Wrap">
+        <!-- header 영역 -->
+        <%-include('header.ejs') %>
+
+            <!-- Main -->
+            <main>
+                <div id="title">
+                    조문게시판
+                </div>
+                <section id="detailBoard">
+                    <table class="detailtop">
+                        <tr>
+                            <th> 빈소 </th>
+                            <td>
+                                <%= 상세페이지.roomNum %>
+                            </td>
+
+                            <th> 고인명 </th>
+                            <td>
+                                <%= 상세페이지.deceasedName %>
+                            </td>
+                            <th> 작성자 </th>
+                            <td>
+                                <%= 상세페이지.writer %>
+                            </td>
+                            <th>
+                                고인과의 관계
+                            </th>
+                            <td>
+                                <%= 상세페이지.relation %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th> 게시글 제목 </th>
+                            <td colspan="5">
+                                <%= 상세페이지.title %>
+                            </td>
+                            <th> 작성일자 </th>
+                            <td>
+                                <%= 상세페이지.date %>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="writebottom">
+                        <%= 상세페이지.content %>
+                    </div>
+                </section>
+                <section id="btnsection">
+                    <form action="/euljifuneral/condolences/delete" method="POST" id="deleteForm">
+                        <button type="submit" id="deletebtn" name="delete" value="delete"> 삭제 </button>
+                    </form>
+
+                    <button type="button" id="listbtn" onclick="location.href='/euljifuneral/condolences/list/1'"> 목록으로
+                        돌아가기 </button>
+                </section>
+
+
+            </main>
+
+            <%# footer 영역 %>
+                <%- include('footer.ejs') %>
+
+    </div>
+
+    <script src="/js/main.js" type="text/javascript"></script>
+    <script>
+        // 삭제 버튼 누르면 prompt 창 띄워서 비밀번호 입력받고,
+        // 입력받은 값을 json 형식으로 서버로 전송하기 
+        document.getElementById('deletebtn').addEventListener('click', function (e) {
+
+            // 폼 제출 방지
+            e.preventDefault();
+
+            const promptValue = prompt("게시글을 삭제합니다. \n 게시글 작성 시 입력한 비밀번호를 입력해주세요.");
+
+            console.log(promptValue)
+
+            if (promptValue) {
+                fetch('/euljifuneral/condolences/delete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        password: promptValue,
+                        delete: 'delete',
+                    })
+                })
+                    // promptValue는 text형식으로 보내기
+                    .then(response => response.text())
+                    .then(data => {
+                        // 서버로부터 받은 응답 경고창으로 띄우기
+                        alert(data);
+                        // 비밀번호 일치 시, 게시글 삭제 후 list 페이지 이동
+                        if (data.includes("비밀번호가 일치합니다. 게시글을 삭제합니다.")) {
+                            window.location.href = '/euljifuneral/condolences/list/1';
+                        }
+                    })
+                    .catch(error => console.error('error: ', error))
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -21,7 +21,7 @@
             <!-- Main -->
             <main>
                 <div id="title">
-                    조문하기 - 글 작성
+                    조문글 작성하기
                 </div>
                 <section id="writeBoard">
                     <form action="/euljifuneral/condolences/write" method="POST" id="writeboard">
@@ -59,11 +59,11 @@
                                 <td>
                                     <select name="relation" id="relation" name="relation">
                                         <option value="relation" disabled selected> 고인과의 관계 </option>
-                                        <option value="family"> 가족 </option>
-                                        <option value="relative"> 친척 </option>
-                                        <option value="friend"> 친구 </option>
-                                        <option value="colleague"> 동료 </option>
-                                        <option value="acquaintance"> 지인 </option>
+                                        <option value="가족"> 가족 </option>
+                                        <option value="친척"> 친척 </option>
+                                        <option value="친구"> 친구 </option>
+                                        <option value="동료"> 동료 </option>
+                                        <option value="지인"> 지인 </option>
                                     </select>
                                 </td>
                             </tr>
@@ -210,7 +210,7 @@
                 e.preventDefault();
                 return alert("비밀번호를 다시 확인해주시기 바랍니다.")
             } else {
-                alert("작성 글을 게시합니다.")
+                alert("조문글을 게시합니다.")
             };
         });
     </script>

@@ -21,13 +21,13 @@
             <!-- Main -->
             <main>
                 <div id="title">
-                    조문하기
+                    조문게시판
                 </div>
                 <section id="condoBoard">
                     <div class="condoinfo">
                         <p>
                             <i class="fa-solid fa-lightbulb"></i>
-                            조문 글은 장례기간동안만 작성이 가능하며, 작성 시 빈소 호수 입력 후 고인명을 정확히 확인해주시기 바랍니다.
+                            조문 글 작성 시, 빈소 호수와 고인명을 정확히 확인해주시기 바랍니다.
                         </p>
                         <p>
                             <i class="fa-solid fa-lightbulb"></i>
@@ -56,7 +56,6 @@
                                             <th> 작성자 </th>
                                             <th> 작성일자 </th>
                                             <th> 수정하기 </th>
-                                            <th> 삭제하기 </th>
                                         </tr>
                                     </thead>
                                     <tbody class="boardtbody">
@@ -73,11 +72,6 @@
                                                     <td> <%= 조문게시판[i].date %> </td>
                                                     <td>
                                                         <a href="/euljifuneral/condolences/edit/<%= 조문게시판[i]._id %>"> 수정 </a>
-                                                    </td>
-                                                    <td>
-                                                        <form action="/euljifuneral/condolences/delete" method="POST" id="deleteForm">
-                                                            <button type="submit" id="deletebtn" name="delete" value="delete"> 삭제 </button>
-                                                        </form>
                                                     </td>
                                                 </tr>
                                                 <%

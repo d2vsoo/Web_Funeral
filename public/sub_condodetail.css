@@ -1,0 +1,117 @@
+#detailBoard {
+    width: 1650px;
+    height: 700px;
+    margin: 20px 0 0 40px ;
+}
+
+/* 작성한 글 보는 곳 */
+.detailtop {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgb(51, 35, 23);
+}
+
+.detailtop th {
+    width: 100px;
+}
+
+.detailtop tr:first-of-type th {
+    width: 150px;
+}
+
+.detailtop tr:first-of-type td {
+    width: 300px;
+}
+
+.detailtop th, .detailtop td {
+    border: 1px solid rgb(51, 35, 23);
+}
+
+/* 글 작성 form input/select 태그 css */
+/* 빈소, 고인과의 관계, 작성일자 */
+#room, #deceasedName , #relation, .date {
+    width: 80%;
+    height: 30px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+#room option, #relation option {
+    font-size: 16px;
+}
+
+#deceasedName, .date {
+    cursor: default;
+}
+
+/* 작성자 */
+#writename {
+    width: 80%;
+    height: 30px;
+    border: none;
+    text-align: center;
+    background-color:whitesmoke;
+}
+
+
+/* 게시글 제목 */
+.writetitle {
+    width: 95%;
+    height: 30px;
+    border: none;
+    padding-left: 15px;
+    box-sizing: border-box;
+    background-color:whitesmoke;
+}
+
+/* 내용 작성 칸 */
+.writebottom {
+    width: 100%;
+    height: 560px;
+    margin-top: 20px;
+    padding: 30px 30px 0 30px ;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+}
+
+/* 수정, 삭제, 돌아가기 버튼 */
+#btnsection {
+    width: 160px;
+    height: 100px;
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+}
+
+#listbtn {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(51, 35, 23);
+    color: white;
+    border: none;
+}
+
+#listbtn:hover {
+    background-color:  #94adc5;
+    cursor: pointer;
+    box-shadow: 5px 0 10px 0 gainsboro;
+}
+
+#deletebtn {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(51, 35, 23);
+    color: white;
+    border: none;
+    font-size: 13px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+#deletebtn:hover {
+    background-color:  #94adc5;
+    cursor: pointer;
+    box-shadow: 5px 0 10px 0 gainsboro;
+}
