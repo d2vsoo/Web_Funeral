@@ -275,7 +275,14 @@ table td:nth-of-type(4), table td:nth-of-type(5), table td:nth-of-type(6) {
     right: 400px;
 }
 
-#section02 h3 {
+#section02 h3:first-of-type {
+    position: absolute;
+    left: 50px;
+    bottom: 285px;
+    color: white;
+}
+
+#section02 h3:last-of-type {
     position: absolute;
     left: 50px;
     bottom: 170px;
@@ -295,7 +302,11 @@ table td:nth-of-type(4), table td:nth-of-type(5), table td:nth-of-type(6) {
     left: 40px;
 }
 
-#section02 div {
+#section02 div:first-of-type {
+    bottom: 220px;
+}
+
+#section02 div:last-of-type {
     bottom: 100px;
 }
 

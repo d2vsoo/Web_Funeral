@@ -239,8 +239,148 @@ router.put('/condolences/edit', async (요청, 응답) => {
 //========================================================================
 
 // 감사인사 페이지
-router.get('/thanks', (요청, 응답) => {
-    응답.render('sub_thanks')
+router.get('/thanks/page/:id', async(요청, 응답) => {
+
+    const thanks = await db.collection('Thanks').find().toArray();
+    console.log(요청.params);
+
+    // 1~12번 글 찾아서 list 변수 안에 저장하기
+    const list = await db.collection('Thanks').find().skip((요청.params.id -1)*12).limit(12).toArray();
+
+    응답.render('sub_thanks', {감사인사 : thanks, list : list })
 })
+
+// 감사인사 작성 페이지
+router.get('/thanks/write', async(요청, 응답) => {
+
+    const result = await db.collection('Status').find().toArray();
+
+    응답.render('sub_thankswrite', {빈소현황 : result})
+})
+
+// 감사인사 게시글 저장하기
+router.post('/thanks/write', async(요청, 응답)=>{
+
+    count = await db.collection('Counter').find().toArray();
+    console.log(count[0].count);
+
+    console.log(요청.body);
+
+    // db에 저장하기
+    const roomNum = 요청.body.room;
+    const deceasedName = 요청.body.deceasedName;
+    const writename = 요청.body.writename;
+    const relation = 요청.body.relation;
+    const writetitle = 요청.body.writetitle;
+    const writecontent = 요청.body.writecontent;
+
+    // 작성일자 넣기
+    const date = new Date();
+    const currentYear = date.getFullYear();
+    const currentMonth = date.getMonth() + 1;
+    const currentDay = date.getDate();
+
+    const writeDate = `${currentYear}년 ${currentMonth}월 ${currentDay}일`;
+    console.log(writeDate);
+
+    await db.collection('Thanks').insertOne({
+        _id : count[0].count + 1,
+        roomNum : roomNum,
+        deceasedName : deceasedName,
+        writename : writename,
+        relation : relation,
+        writetitle : writetitle,
+        writecontent : writecontent,
+        writeDate : writeDate
+    });
+
+    await db.collection('Counter').updateOne(
+        // _id는 똑같은 컬렉션에 count 필드만 증가시키기
+        {},
+        { $inc : {count : 1}}
+    )
+
+    응답.redirect('/euljifuneral/thanks/page/1')
+})
+
+// 감사인사 게시글 상세페이지
+router.get('/thanks/detail/:id', async(요청, 응답)=>{
+    
+    console.log("id는 뭐냐! ", 요청.params.id)
+    console.log(typeof(요청.params.id))
+    const result = parseInt(요청.params.id)
+    console.log(result)
+
+    try {
+        let thanks = await db.collection('Thanks').findOne({
+            _id : result
+        });
+        console.log("result : ", thanks);
+
+        if (result === null){
+            응답.status(400).send('<script> alert("게시글이 존재하지 않습니다.") </script>')
+        } else {
+            응답.render('sub_thanksdetail', {감사인사 : thanks})
+        }
+        
+    } catch(e){
+        console.log(e);
+        // 400대 : 유저 문제 
+        응답.status(404).send('잘못된 URL로 접근했습니다.');
+    }
+});
+
+// 감사인사 게시글 수정하기
+router.get('/thanks/edit/:id', async(요청, 응답)=>{
+    let thanks = await db.collection('Thanks').findOne({
+        _id : Number(요청.params.id)
+    })
+    console.log('thanks 내용 : ', thanks);
+
+    응답.render('sub_thanksedit', {감사인사 : thanks})
+})
+
+router.put('/thanks/edit', async (요청, 응답) => {
+
+    console.log('요청.body.id : ' , 요청.body.id)
+    console.log(typeof(요청.body.id))
+
+    const result = parseInt(요청.body.id);
+
+
+    const editContent = await db.collection('Thanks').updateOne(
+        { _id: result },
+        {
+            $set: {
+                writename: 요청.body.editname,
+                writetitle: 요청.body.edittitle,
+                writecontent: 요청.body.editcontent,
+            }
+        })
+    console.log(editContent);
+    응답.redirect('/euljifuneral/thanks/page/1');
+})
+
+// thanks 게시판 글 삭제하기
+router.delete('/thanks/delete', async(요청, 응답)=>{
+    
+    console.log(요청.query.docid)
+
+    await db.collection('Thanks').deleteOne({
+        _id : parseInt(요청.query.docid)
+    })
+
+    const thanksDB = await db.collection('Thanks').find().toArray();
+
+    if (thanksDB.length === 0) {
+        // count 필드를 0으로 설정
+        await db.collection('Counter').updateOne(
+            {},  // 필터 조건 (모든 문서)
+            { $set: { count: 0 } }  // count 필드를 0으로 설정
+        );
+    }
+
+    응답.send("선택한 게시물이 삭제되었습니다.");
+});
 
 module.exports = router;
