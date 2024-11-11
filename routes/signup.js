@@ -134,6 +134,10 @@ router.post('/imgUpload', upload.single('fdImg'), async (요청, 응답) => {
         img: 요청.file.location,
         userid: 요청.body.userImgId
     })
+
+    console.log(요청.file.location)
+    console.log(요청.file)
+
     return 응답.redirect('/')
 })
 
