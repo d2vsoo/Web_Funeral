@@ -61,20 +61,24 @@
                                     </thead>
                                     <tbody>
 
-                                        <% for (var i=0; i<list.length; i++) {
+                                        <% for (var i=0; i<목록.length; i++) {
 
                                             %>
                                             <tr>
-                                                <td> <%= list[i]._id %> </td>
+                                                <td> <%= (현재페이지-1)*12 +i+1 %> </td>
                                                 <td> <%= 감사인사[i].roomNum %> </td>
                                                 <td> <%= 감사인사[i].deceasedName %> </td>
                                                 <td> 
-                                                    <a href="/euljifuneral/thanks/detail/<%= list[i]._id %>"><%= 감사인사[i].writetitle %></a>
+                                                    <a href="/euljifuneral/thanks/detail/<%= 감사인사[i]._id %>"><%= 감사인사[i].writetitle %></a>
                                                     </td>
                                                 <td> <%= 감사인사[i].writename %> </td>
                                                 <td> <%= 감사인사[i].writeDate %> </td>
-                                                <td> <a href="/euljifuneral/thanks/edit/<%= list[i]._id %>"> 수정하기</a> </td>
-                                                <td class="delete" data-id="<%= list[i]._id %>"> 삭제하기 </td>
+                                                <td> <a href="/euljifuneral/thanks/edit/<%= 감사인사[i]._id %>"> 수정하기</a> </td>
+                                                <td>
+                                                    <form action="/euljifuneral/thanks/delete" method="POST" id="deleteForm">
+                                                        <button type="submit" id="deletebtn" name="delete" value="delete"> 삭제 </button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             <%
                                         } %>
@@ -85,8 +89,6 @@
                     </div>
                 </section>
                 <section id="thanksBtn">
-
-                    <!-- <%- JSON.stringify(list) %> -->
 
                     <div>
                         <span class="thanksbtn thanksbtn01"> 
@@ -114,21 +116,7 @@
     </div>
 
     <script src="/js/main.js" type="text/javascript"></script>
-    <script>
-        document.querySelectorAll('.delete')[0].addEventListener('click', function(e){
-
-            console.log(e.target.dataset.id)
-
-            fetch(`/euljifuneral/thanks/delete?docid=${e.target.dataset.id}`, {
-                method : 'DELETE'
-            })
-            .then((request)=>request.text())
-            .then((request)=>{
-                e.target.parentElement.style.display = 'none';
-            })
-        })
-    </script>
-
+    
 </body>
 
 </html>

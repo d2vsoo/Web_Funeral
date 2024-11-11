@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 직원전용 회원가입 | 의정부 을지병원 장례식장 </title>
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/sub_search.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="Wrap">
+        <a href="/">
+            <img src="/img/emc.jpg" alt="emc" width="110" class="logo">
+        </a>
+
+        <main>
+            <h3 id="title">
+                검색결과
+            </h3>
+            <section id="content">
+                    <% for (var i=0; i < 검색결과.length; i++){
+                        %>
+                        <div id="searchtable">
+                        <a href="/euljifuneral/condolences/detail/<%= 검색결과[i]._id %>">
+                            <p class="title"> 제목 : <%= 검색결과[i].title %> </p>
+                            <div class="content">
+                                <p> 내용 : </p>
+                                <p> <%= 검색결과[i].content %> </p>
+                            </div>
+                        </a>
+                    </div>
+                        <%
+                    } %>
+            </section>
+
+
+        </main>
+    </div>
+</body>
+
+</html>

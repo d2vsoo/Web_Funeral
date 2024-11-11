@@ -36,13 +36,11 @@
         <div id="search">
             <input class="search" placeholder=" 검색어를 입력하세요">
             <button class="search-send">
-                <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
                         class="bi bi-search" viewBox="0 0 16 16">
                         <path
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
-                </a>
             </button>
         </div>
 
@@ -107,3 +105,13 @@
     </li>
 </ul>
 
+<script>
+    document.querySelector('.search-send').addEventListener('click',function(){
+
+        // input에 유저가 입력한 값 찾기
+        let searchValue = document.querySelector('.search').value;
+
+        // 해당 url로 페이지 이동하기
+        location.href = `/search?val=${searchValue}`;
+    })
+</script>

@@ -56,7 +56,7 @@
 }
 
 .tabletitle th {
-    padding: 8px 0;
+    padding: 14px 0;
     box-sizing: border-box;
 }
 
@@ -163,8 +163,16 @@
 }
 
 /* 삭제하기 버튼 */
-.delete:hover{
-    color: #5b7d9b;
+#deletebtn {
+    width: 50px;
+    height: 25px;
+    border: none;
+    font-size: 12px;
+    border: none;
+}
+
+#deletebtn:hover {
+    background-color:  #94adc5;
     cursor: pointer;
-    font-weight: 600;
+    box-shadow: 5px 0 10px 0 gainsboro;
 }

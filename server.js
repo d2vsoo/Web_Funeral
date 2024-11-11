@@ -221,7 +221,7 @@ function loginOk(요청, 응답, next){
     if(요청.user){
         next();
     } else {
-        요청.send('로그인이 필요합니다.')
+        응답.send('로그인이 필요합니다.')
     }
 }
 
@@ -298,4 +298,24 @@ app.post('/management/delete', async(요청, 응답)=>{
         })
     }
     return 응답.redirect('/management')
+})
+
+// =======================================================================
+app.get('/search', async(요청, 응답)=>{
+    console.log(요청.query.val)
+
+    const 검색어 = 요청.query.val || '';
+
+    let result = await db.collection('condoBoard').find({
+        $or : [
+            {content : {$regex : 검색어}},
+            {title : {$regex : 검색어}}
+        ]
+    }).toArray();
+
+    console.log(result)
+
+    const condoContent = await db.collection('condoBoard').find().toArray();
+
+    응답.render('sub_search', {검색결과 : result, 게시글이동 : condoContent})
 })

@@ -242,12 +242,15 @@ router.put('/condolences/edit', async (요청, 응답) => {
 router.get('/thanks/page/:id', async(요청, 응답) => {
 
     const thanks = await db.collection('Thanks').find().toArray();
-    console.log(요청.params);
+    
+    console.log(typeof(요청.params.id))
+
+    const currentpage = parseInt(요청.params.id);
 
     // 1~12번 글 찾아서 list 변수 안에 저장하기
-    const list = await db.collection('Thanks').find().skip((요청.params.id -1)*12).limit(12).toArray();
+    const list = await db.collection('Thanks').find().skip((currentpage -1)*12).limit(12).toArray();
 
-    응답.render('sub_thanks', {감사인사 : thanks, list : list })
+    응답.render('sub_thanks', {감사인사 : thanks, 현재페이지 : currentpage, 목록 : list})
 })
 
 // 감사인사 작성 페이지
@@ -260,9 +263,6 @@ router.get('/thanks/write', async(요청, 응답) => {
 
 // 감사인사 게시글 저장하기
 router.post('/thanks/write', async(요청, 응답)=>{
-
-    count = await db.collection('Counter').find().toArray();
-    console.log(count[0].count);
 
     console.log(요청.body);
 
@@ -284,7 +284,6 @@ router.post('/thanks/write', async(요청, 응답)=>{
     console.log(writeDate);
 
     await db.collection('Thanks').insertOne({
-        _id : count[0].count + 1,
         roomNum : roomNum,
         deceasedName : deceasedName,
         writename : writename,
@@ -294,12 +293,6 @@ router.post('/thanks/write', async(요청, 응답)=>{
         writeDate : writeDate
     });
 
-    await db.collection('Counter').updateOne(
-        // _id는 똑같은 컬렉션에 count 필드만 증가시키기
-        {},
-        { $inc : {count : 1}}
-    )
-
     응답.redirect('/euljifuneral/thanks/page/1')
 })
 
@@ -308,7 +301,7 @@ router.get('/thanks/detail/:id', async(요청, 응답)=>{
     
     console.log("id는 뭐냐! ", 요청.params.id)
     console.log(typeof(요청.params.id))
-    const result = parseInt(요청.params.id)
+    const result = new ObjectId(요청.params.id)
     console.log(result)
 
     try {
@@ -333,7 +326,7 @@ router.get('/thanks/detail/:id', async(요청, 응답)=>{
 // 감사인사 게시글 수정하기
 router.get('/thanks/edit/:id', async(요청, 응답)=>{
     let thanks = await db.collection('Thanks').findOne({
-        _id : Number(요청.params.id)
+        _id : new ObjectId(요청.params.id)
     })
     console.log('thanks 내용 : ', thanks);
 
@@ -342,10 +335,9 @@ router.get('/thanks/edit/:id', async(요청, 응답)=>{
 
 router.put('/thanks/edit', async (요청, 응답) => {
 
-    console.log('요청.body.id : ' , 요청.body.id)
-    console.log(typeof(요청.body.id))
+    console.log(요청.body.id);
 
-    const result = parseInt(요청.body.id);
+    const result = new ObjectId(요청.body.id);
 
 
     const editContent = await db.collection('Thanks').updateOne(
@@ -362,25 +354,27 @@ router.put('/thanks/edit', async (요청, 응답) => {
 })
 
 // thanks 게시판 글 삭제하기
-router.delete('/thanks/delete', async(요청, 응답)=>{
-    
-    console.log(요청.query.docid)
+router.post('/thanks/delete', loginOk, async(요청, 응답)=>{
 
-    await db.collection('Thanks').deleteOne({
-        _id : parseInt(요청.query.docid)
-    })
+    const id = new ObjectId(요청.body.id);
+    console.log(id);
 
     const thanksDB = await db.collection('Thanks').find().toArray();
 
-    if (thanksDB.length === 0) {
-        // count 필드를 0으로 설정
-        await db.collection('Counter').updateOne(
-            {},  // 필터 조건 (모든 문서)
-            { $set: { count: 0 } }  // count 필드를 0으로 설정
-        );
-    }
+    await db.collection('Thanks').deleteOne({
+        id : thanksDB._id
+    })
 
-    응답.send("선택한 게시물이 삭제되었습니다.");
+    응답.redirect('/euljifuneral/thanks/page/1')
 });
+
+function loginOk(요청, 응답, next){
+    // 로그인 후 session에 있으면 요청.user가 항상 있는 것
+    if(요청.user){
+        next();
+    } else {
+        응답.send('<script> alert("로그인이 필요합니다"); location.href = "/euljifuneral/thanks/page/1"; </script>')
+    }
+}
 
 module.exports = router;
