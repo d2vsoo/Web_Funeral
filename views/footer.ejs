@@ -3,11 +3,11 @@
     <div id="left-footer">
         <!-- link -->
         <span class="footer-link">
-            <a href="#"> 이용약관 </a> |
-            <a href="#"> 개인정보처리방침 </a> |
-            <a href="#"> 윤리강령 </a> |
-            <a href="#"> 환자의 권리와 의무 </a> |
-            <a href="#"> 이메일 무단수집거부 </a>
+            <a href="#" title="새창열림" onclick="window.open('http://www.uemc.ac.kr/footer/footer_pg07.jsp', '_blank', 'width=600, height=600');" style="cursor:pointer;"> 이용약관 </a> |
+            <a class="fd_color" href="#" onclick="window.open('http://www.uemc.ac.kr/footer/footer_pg03_29.jsp', '_blank', 'width=600, height=600');" style="cursor:pointer;"> 개인정보처리방침 </a> |
+            <a href="#" onclick="window.open('http://www.uemc.ac.kr/footer/footer_pg03.jsp', '_blank', 'width=600, height=600');" style="cursor:pointer;"> 윤리강령 </a> |
+            <a href="#" onclick="window.open('http://www.uemc.ac.kr/footer/footer_pg04.jsp', '_blank', 'width=600, height=600');" style="cursor:pointer;">환자의 권리와 의무</a> |
+            <a href="#" onclick="window.open('http://www.uemc.ac.kr/footer/footer_pg06.jsp', '_blank', 'width=600, height=350');" style="cursor:pointer;">이메일무단수집거부</a>
         </span>
         <!-- 주소 -->
         <address> [우 : 11759] 경기도 의정부시 동일로 712 의정부을지대학교병원 </address>
@@ -20,22 +20,16 @@
         <!-- family site dropdown -->
         <form method="GET" action="" id="FamilySite">
             <label for="FamilySite"></label>
-            <select name="FamilySite" id="FamilySite">
+            <select name="FamilySite" id="FamilySite" onchange="window.open(value, '_blank')">
                 <option value="site" disabled selected> Family Site 바로가기 </option>
-                <option value="euljiedu">
-                    <a href="https://www.euljiedu.net/" target="_blank">
+                <option value="https://www.euljiedu.net/">
                         을지인력개발원
-                    </a>
                 </option>
-                <option value="bumsuk">
-                    <a href="https://www.bumsuk.or.kr/" target="_blank">
+                <option value="https://www.bumsuk.or.kr/">
                         범석학술장학재단
-                    </a>
                 </option>
-                <option value="ilhyunmuseum">
-                    <a href="http://www.ilhyunmuseum.or.kr/" target="_blank">
+                <option value="http://www.ilhyunmuseum.or.kr/">
                         일현미술관
-                    </a>
                 </option>
             </select>
         </form>
